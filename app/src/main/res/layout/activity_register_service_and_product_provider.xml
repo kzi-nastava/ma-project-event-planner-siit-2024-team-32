@@ -40,29 +40,15 @@
     <EditText
         android:id="@+id/description"
         android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_height="150dp"
         android:layout_marginTop="5dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="@string/description"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/eventTypes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
-
-    <EditText
-        android:id="@+id/eventTypes"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="@string/eventTypes"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <Button
         android:id="@+id/RegisterButtonn"

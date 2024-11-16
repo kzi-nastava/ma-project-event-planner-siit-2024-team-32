@@ -28,22 +28,18 @@ public class RegisterActivity extends AppCompatActivity {
 
         Log.d("Katenda", "RegisterActivity onCreate()");
         Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
-
+        Button registerButton = findViewById(R.id.RegisterButton);
+        registerButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 
-    public void onRadioButtonClicked ( View view ) {
-        if (((RadioButton) findViewById(R.id.rb1)).isChecked()){
-            Intent intent = new Intent(RegisterActivity.this, RegisterEventOrganizerActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        else if(((RadioButton) findViewById(R.id.rb2)).isChecked()){
-            Intent intent = new Intent(RegisterActivity.this, RegisterServiceAndProductProviderActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
     @Override
     protected void onStart() {
         super.onStart();
