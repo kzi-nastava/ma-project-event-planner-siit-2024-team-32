@@ -11,58 +11,50 @@
         android:id="@+id/registerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="PLACEHOLDER\nThis is the register screen"
+        android:layout_marginTop="50dp"
+        android:text="REGISTER PAGE"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/registerEmailEditText"
+        app:layout_constraintBottom_toTopOf="@+id/choose"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/registerLogInButton"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:text="Log in"
-        app:layout_constraintBottom_toTopOf="@+id/registerRegisterButton"
+    <TextView
+        android:id="@+id/choose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Choose your role"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/registerTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerPasswordEditText" />
+        app:layout_constraintBottom_toBottomOf="@+id/group"
+        />
 
-    <Button
-        android:id="@+id/registerRegisterButton"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="100dp"
-        android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/choose"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerLogInButton" />
+        android:gravity="center"
+        >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb1"
+            android:text="Event organizer"
+            android:onClick="onRadioButtonClicked"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rb2"
+            android:text="Service and product provider"
+            android:onClick="onRadioButtonClicked"/>
+    </RadioGroup>
 
-    <EditText
-        android:id="@+id/registerEmailEditText"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="200dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:hint="E-Mail"
-        app:layout_constraintBottom_toTopOf="@+id/registerPasswordEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTextView" />
-
-    <EditText
-        android:id="@+id/registerPasswordEditText"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="200dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="Password"
-        app:layout_constraintBottom_toTopOf="@+id/registerLogInButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerEmailEditText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

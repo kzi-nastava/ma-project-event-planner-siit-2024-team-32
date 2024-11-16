@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Katenda</string>
+    <string name="registerOdTitle">EVENT ORGANIZER REGISTER</string>
+    <string name="registerPUPTitle">SERVICE PROVIDER REGISTER</string>
+    <string name="email">E-mail</string>
+    <string name="password">Password</string>
+    <string name="passwordRe">Password Rewrite</string>
+    <string name="name">First Name</string>
+    <string name="surname">Last Name</string>
+    <string name="city">City</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="registerButton">Register</string>
+    <string name="LoginTitle">WELCOME TO KATENDA\nLog in page</string>
+    <string name="loginButton">Log in</string>
+    <string name="forgotPassword">Forgot password?</string>
+    <string name="goToRegister">Don\'t have an account?</string>
+    <string name="companyName">Company Name</string>
+    <string name="description">Description</string>
+    <string name="eventTypes">Offered event types</string>
 </resources>

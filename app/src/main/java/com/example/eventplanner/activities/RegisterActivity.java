@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -28,27 +29,21 @@ public class RegisterActivity extends AppCompatActivity {
         Log.d("Katenda", "RegisterActivity onCreate()");
         Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
 
-        Button registerLogInButton = findViewById(R.id.registerLogInButton);
-        registerLogInButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
 
-        Button registerRegisterButton = findViewById(R.id.registerRegisterButton);
-        registerRegisterButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
     }
 
+    public void onRadioButtonClicked ( View view ) {
+        if (((RadioButton) findViewById(R.id.rb1)).isChecked()){
+            Intent intent = new Intent(RegisterActivity.this, RegisterEventOrganizerActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else if(((RadioButton) findViewById(R.id.rb2)).isChecked()){
+            Intent intent = new Intent(RegisterActivity.this, RegisterServiceAndProductProviderActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
     @Override
     protected void onStart() {
         super.onStart();
