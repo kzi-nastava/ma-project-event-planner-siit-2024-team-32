@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/goldenrod"
+
     tools:context=".fragments.ServicesFragment">
 
     <ScrollView
@@ -23,6 +23,7 @@
 
                 <ImageView
                     android:id="@+id/appLogoImage"
+                    android:background="@drawable/rounded_image_background"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:src="@drawable/ic_launcher_foreground" />
@@ -50,6 +51,7 @@
                     android:paddingRight="12dp">
 
                     <Button
+                        android:backgroundTint="@color/orange"
                         android:id="@+id/logInButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -67,6 +69,8 @@
 
                 <EditText
                     android:id="@+id/searchEntry"
+                    android:background="@drawable/textview_border"
+                    android:layout_marginTop="13dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -86,6 +90,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:layout_marginTop="13dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
 
@@ -97,6 +102,8 @@
 
                 <EditText
                     android:id="@+id/lengthFromEntry"
+                    android:background="@drawable/textview_border"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -117,6 +124,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/textview_border"
+
                     android:inputType="number" />
             </LinearLayout>
 
@@ -124,6 +133,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
+                android:layout_marginTop="13dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp">
 
@@ -131,13 +141,15 @@
                     android:id="@+id/priceFromText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Min. price:" />
+                    android:text="Min. price:  " />
 
                 <EditText
                     android:id="@+id/priceFromEntry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/textview_border"
+
                     android:inputType="numberDecimal" />
 
                 <FrameLayout
@@ -148,19 +160,22 @@
                     android:id="@+id/priceToText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Max. price:" />
+                    android:text="Max. price:  " />
 
                 <EditText
                     android:id="@+id/priceToEntry"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@drawable/textview_border"
+
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -175,17 +190,22 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:background="@drawable/textview_border"
+
+
+
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/cityText"
-                    android:layout_width="70dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="City:"
                     android:textAlignment="center" />
@@ -195,6 +215,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:background="@drawable/textview_border"
+
                     android:inputType="text" />
 
             </LinearLayout>
@@ -202,11 +224,12 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/countryText"
-                    android:layout_width="70dp"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="Country:"
                     android:textAlignment="center" />
@@ -216,6 +239,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:background="@drawable/textview_border"
+
                     android:inputType="text" />
 
             </LinearLayout>
@@ -418,65 +443,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView7"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
             </LinearLayout>
 
         </LinearLayout>
