@@ -4,15 +4,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.eventplanner.R;
 import com.example.eventplanner.databinding.ActivityHomeBinding;
-import com.example.eventplanner.databinding.ActivityLoginBinding;
+import com.example.eventplanner.fragments.EventsFragment;
+import com.example.eventplanner.fragments.HomeFragment;
+import com.example.eventplanner.fragments.ProductsFragment;
+import com.example.eventplanner.fragments.ServicesFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -21,9 +23,33 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityHomeBinding binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        replaceFragment(new HomeFragment());
+
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+
+            if (itemId == R.id.navigationBarHome) {
+                replaceFragment(new HomeFragment());
+            } else if (itemId == R.id.navigationBarEvents) {
+                replaceFragment(new EventsFragment());
+            } else if (itemId == R.id.navigationBarServices) {
+                replaceFragment(new ServicesFragment());
+            } else if (itemId == R.id.navigationBarProducts) {
+                replaceFragment(new ProductsFragment());
+            }
+
+            return true;
+        });
 
         Log.d("Katenda", "HomeActivity onCreate()");
         Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
+    }
+
+    private void replaceFragment(Fragment newFragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.homeFrameLayout, newFragment);
+        fragmentTransaction.commit();
     }
 
     @Override
