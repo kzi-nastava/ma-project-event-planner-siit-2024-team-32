@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    tools:context=".activities.CheckServiceActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activities.ServiceManagementActivity">
-
 
         <TextView
             android:id="@+id/textViewCategory"
@@ -21,9 +18,8 @@
             android:layout_marginStart="24dp"
 
             android:layout_marginTop="32dp"
-            android:text="@string/category"
+            android:text="Category"
 
-            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,9 +27,8 @@
             android:id="@+id/spinnerServiceCategory"
             android:layout_width="240dp"
             android:layout_height="46dp"
-            android:layout_marginTop="8dp"
             android:background="@drawable/textview_border"
-            android:visibility="gone"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="@+id/editTextPrice"
             app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
 
@@ -41,7 +36,6 @@
             android:id="@+id/textViewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="27dp"
             android:text="Price"
             app:layout_constraintStart_toStartOf="@+id/textViewCategory"
@@ -51,14 +45,13 @@
             android:id="@+id/editTextPrice"
             android:layout_width="240dp"
             android:layout_height="46dp"
-            android:layout_marginStart="30dp"
             android:layout_marginTop="13dp"
             android:background="@drawable/textview_border"
             android:ems="10"
             android:inputType="number"
+            android:text=""
 
-            android:text="200"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
             app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
 
         <TextView
@@ -67,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
             android:text="Name"
-            app:layout_constraintStart_toStartOf="@+id/editTextPrice"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
             app:layout_constraintTop_toBottomOf="@+id/editTextPrice" />
 
         <EditText
@@ -77,7 +70,6 @@
             android:layout_marginTop="13dp"
             android:ems="10"
             android:inputType="text"
-            android:text="Music"
 
             android:background="@drawable/textview_border"
             app:layout_constraintStart_toStartOf="@+id/textViewName"
@@ -89,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
             android:text="Description"
-            app:layout_constraintStart_toStartOf="@+id/textViewName"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
             app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -109,7 +101,6 @@
             android:layout_marginTop="13dp"
             android:background="@drawable/textview_border"
             android:hint="hint"
-            android:text="Rock music playing"
             app:layout_constraintStart_toStartOf="@+id/editTextText3"
             app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
 
@@ -119,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
             android:text="Discount"
-            app:layout_constraintStart_toStartOf="@+id/textViewDescription"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
             app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
 
         <EditText
@@ -129,7 +120,6 @@
             android:layout_marginTop="13dp"
             android:background="@drawable/textview_border"
             android:ems="10"
-            android:text="0"
             android:inputType="number"
             app:layout_constraintStart_toStartOf="@+id/textInputEditText"
             app:layout_constraintTop_toBottomOf="@+id/textViewDiscount" />
@@ -140,7 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
             android:text="Status"
-            app:layout_constraintStart_toStartOf="@+id/textViewDiscount"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
             app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
 
         <RadioGroup
@@ -158,7 +148,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="13dp"
                 android:text="Visible"
-                android:checked="true"
                 app:layout_constraintBottom_toTopOf="@+id/RadioButtonStatus2"
                 app:layout_constraintStart_toStartOf="@+id/spinnerServiceCategory"
                 app:layout_constraintTop_toBottomOf="@+id/textViewStatus" />
@@ -188,7 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="27dp"
             android:text="Appointment Duration"
-            app:layout_constraintStart_toStartOf="@+id/radioGroup2"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
 
         <RadioGroup
@@ -204,7 +193,6 @@
                 android:id="@+id/radioButtonSetDuration"
                 android:layout_width="134dp"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="Set" />
 
             <RadioButton
@@ -232,7 +220,6 @@
             android:ems="10"
             android:inputType="number"
             android:visibility="visible"
-            android:text="01:30"
             app:layout_constraintStart_toStartOf="@+id/textViewSetDuration"
             app:layout_constraintTop_toBottomOf="@+id/textViewSetDuration" />
 
@@ -316,27 +303,54 @@
             app:layout_constraintStart_toStartOf="@+id/textViewCancelationDeadline"
             app:layout_constraintTop_toBottomOf="@+id/textViewCancelationDeadline" />
 
-        <TextView
-            android:id="@+id/textViewApplicableEvents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="54dp"
-            android:text="Applicable Events"
-            app:layout_constraintStart_toStartOf="@+id/editTextNumberCancelationDeadline"
-            app:layout_constraintTop_toBottomOf="@+id/editTextNumberCancelationDeadline" />
-
         <Button
             android:id="@+id/button"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_marginTop="54dp"
+            android:layout_marginTop="56dp"
             android:backgroundTint="@color/orange"
             android:text="Save"
-            app:layout_constraintStart_toStartOf="@+id/checkBox3"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+            app:layout_constraintStart_toStartOf="@+id/checkBox9"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox9" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:text="Applicable Events"
+            app:layout_constraintStart_toStartOf="@+id/textViewCancelationDeadline"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumberCancelationDeadline" />
+
+        <CheckBox
+            android:id="@+id/checkBox6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Wedding"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <CheckBox
+            android:id="@+id/checkBox8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Birthday"
+            app:layout_constraintStart_toStartOf="@+id/checkBox6"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+
+        <CheckBox
+            android:id="@+id/checkBox9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Puppet Show"
+            app:layout_constraintStart_toStartOf="@+id/checkBox8"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox8" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button5"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
@@ -345,44 +359,7 @@
             app:layout_constraintStart_toEndOf="@+id/button"
             app:layout_constraintTop_toTopOf="@+id/button" />
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="32dp"
-            android:backgroundTint="@color/red"
-            android:text="Delete
-"
-            app:layout_constraintBottom_toBottomOf="@+id/button2"
-            app:layout_constraintStart_toEndOf="@+id/button2" />
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:text="Wedding"
-            app:layout_constraintStart_toStartOf="@+id/textViewApplicableEvents"
-            app:layout_constraintTop_toBottomOf="@+id/textViewApplicableEvents" />
-
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:text="Birthday"
-            app:layout_constraintStart_toStartOf="@+id/checkBox"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox" />
-
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Puppet Show"
-            android:layout_marginTop="13dp"
-            app:layout_constraintStart_toStartOf="@+id/checkBox2"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

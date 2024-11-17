@@ -71,6 +71,7 @@
 
                 <EditText
                     android:id="@+id/searchEntry"
+                    android:background="@drawable/textview_border"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

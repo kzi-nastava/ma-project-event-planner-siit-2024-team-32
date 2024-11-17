@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Bundle bundle = new Bundle();
 
         Log.d("Katenda", "LoginActivity onCreate()");
         //Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
@@ -36,7 +37,9 @@ public class LoginActivity extends AppCompatActivity {
         loginLogInButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                bundle.putString("status", "loggedIn");
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                intent.putExtras(bundle);
                 startActivity(intent);
                 finish();
             }
@@ -46,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         loginRegisterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterServiceAndProductProviderActivity.class);
                 startActivity(intent);
             }
         });
