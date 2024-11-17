@@ -21,7 +21,7 @@ import java.util.TimerTask;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashScreenActivity extends AppCompatActivity {
-    int SPLASH_TIME_OUT = 500;
+    int SPLASH_TIME_OUT = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Log.d("Katenda", "SplashScreenActivity onCreate()");
-        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
 
         new Timer().schedule(new TimerTask() {
             @Override
