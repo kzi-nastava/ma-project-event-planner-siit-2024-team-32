@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigationBarHome"
+        android:icon="@drawable/baseline_home_24"
+        android:iconTint="@color/white"
+        android:title="Home" />
+    <item
+        android:id="@+id/navigationBarEvents"
+        android:icon="@drawable/baseline_event_24"
+        android:iconTint="@color/white"
+        android:title="Events" />
+    <item
+        android:id="@+id/navigationBarServices"
+        android:icon="@drawable/baseline_room_service_24"
+        android:iconTint="@color/white"
+        android:title="Services" />
+    <item
+        android:id="@+id/navigationBarProducts"
+        android:icon="@drawable/baseline_shopping_cart_24"
+        android:iconTint="@color/white"
+        android:title="Products" />
+</menu>
