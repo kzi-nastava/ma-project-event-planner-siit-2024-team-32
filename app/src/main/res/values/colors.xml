@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color
     <color name="goldenrod">#FFDE9825</color>
     <color name="chinese_yellow">#FFFFB000</color>
     <color name="japanese_indigo">#FF21413F</color>
     <color name="deep_aquamarine">#FF3F7774</color>
+    <color name="orange">#FFEC8305</color>
+    <color name="red">#8B0000</color>
+    <color name="dark_orange">#FF8C00</color>
+    <color name="dark_blue">#00008B</color>
 </resources>
