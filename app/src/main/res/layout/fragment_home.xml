@@ -251,35 +251,15 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView20"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView19"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView18"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
 
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:text="TextView" />
+                <include layout="@layout/service_card"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
