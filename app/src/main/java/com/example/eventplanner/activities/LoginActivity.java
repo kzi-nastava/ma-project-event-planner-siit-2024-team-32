@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Log.d("Katenda", "LoginActivity onCreate()");
-        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
 
         Button loginLogInButton = findViewById(R.id.loginLogInButton);
         loginLogInButton.setOnClickListener(new View.OnClickListener(){

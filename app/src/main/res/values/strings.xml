@@ -23,7 +23,7 @@
     <string name="name">First Name</string>
     <string name="surname">Last Name</string>
     <string name="city">City</string>
-    <string name="address">Address</string>
+    <string name="country">Country</string>
     <string name="phone">Phone</string>
     <string name="registerButton">Register</string>
     <string name="LoginTitle">LOGIN</string>
