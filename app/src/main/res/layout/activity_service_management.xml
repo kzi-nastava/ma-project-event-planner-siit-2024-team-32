@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.ServiceManagementActivity">
+
+        <TextView
+            android:id="@+id/textViewCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+
+            android:layout_marginTop="32dp"
+            android:text="Category"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinnerServiceCategory"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:background="@drawable/textview_border"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/editTextPrice"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
+
+        <TextView
+            android:id="@+id/textViewPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Price"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerServiceCategory" />
+
+        <EditText
+            android:id="@+id/editTextPrice"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:inputType="number"
+            android:text=""
+
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
+            app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Name"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPrice" />
+
+        <EditText
+            android:id="@+id/editTextText3"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="13dp"
+            android:ems="10"
+            android:inputType="text"
+
+            android:background="@drawable/textview_border"
+            app:layout_constraintStart_toStartOf="@+id/textViewName"
+            app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Description"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/spinnerServiceCategory"
+            app:layout_constraintStart_toStartOf="@+id/editTextText3"
+            app:layout_constraintTop_toBottomOf="@+id/textInputEditText">
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText"
+            android:layout_width="300dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/textview_border"
+            android:hint="hint"
+            app:layout_constraintStart_toStartOf="@+id/editTextText3"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+
+        <TextView
+            android:id="@+id/textViewDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Discount"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
+            app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@+id/textInputEditText"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDiscount" />
+
+        <TextView
+            android:id="@+id/textViewStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Status"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:background="@drawable/textview_border"
+            android:layout_width="183dp"
+            android:layout_height="183dp"
+            android:layout_marginTop="13dp"
+            app:layout_constraintStart_toStartOf="@+id/editTextNumber"
+            app:layout_constraintTop_toBottomOf="@+id/textViewStatus">
+
+            <RadioButton
+                android:id="@+id/RadioButtonStatus1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="Visible"
+                app:layout_constraintBottom_toTopOf="@+id/RadioButtonStatus2"
+                app:layout_constraintStart_toStartOf="@+id/spinnerServiceCategory"
+                app:layout_constraintTop_toBottomOf="@+id/textViewStatus" />
+
+            <RadioButton
+                android:id="@+id/RadioButtonStatus2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="Invisible"
+                app:layout_constraintStart_toStartOf="@+id/spinnerServiceCategory"
+                app:layout_constraintTop_toBottomOf="@+id/RadioButtonStatus1" />
+
+            <RadioButton
+                android:id="@+id/RadioButtonStatus3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:text="Unavailable"
+                app:layout_constraintStart_toStartOf="@+id/spinnerServiceCategory"
+                app:layout_constraintTop_toBottomOf="@+id/RadioButtonStatus2" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewAppointmentType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Appointment Duration"
+            app:layout_constraintStart_toStartOf="@+id/textViewCategory"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:background="@drawable/textview_border"
+            android:layout_width="358dp"
+            android:layout_height="104dp"
+            android:layout_marginTop="13dp"
+            app:layout_constraintStart_toStartOf="@+id/radioGroup2"
+            app:layout_constraintTop_toBottomOf="@+id/textViewAppointmentType">
+
+            <RadioButton
+                android:id="@+id/radioButtonSetDuration"
+                android:layout_width="134dp"
+                android:layout_height="wrap_content"
+                android:text="Set" />
+
+            <RadioButton
+                android:id="@+id/RadioButtomCustomDuration"
+                android:layout_width="134dp"
+                android:layout_height="wrap_content"
+                android:text="Custom" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textViewSetDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Duration"
+            app:layout_constraintStart_toStartOf="@+id/radioGroup"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+        <EditText
+            android:id="@+id/editTextNumberDuration"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:inputType="number"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="@+id/textViewSetDuration"
+            app:layout_constraintTop_toBottomOf="@+id/textViewSetDuration" />
+
+        <TextView
+            android:id="@+id/textViewMinimumDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Minimum Duration"
+            app:layout_constraintStart_toStartOf="@+id/editTextNumberDuration"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumberDuration" />
+
+        <EditText
+            android:id="@+id/editTextNumberMinimumDuration"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@+id/editTextNumberDuration"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMinimumDuration" />
+
+        <TextView
+            android:id="@+id/textViewMaximumDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Maximum Duration"
+            app:layout_constraintStart_toStartOf="@+id/editTextNumberMinimumDuration"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumberMinimumDuration" />
+
+        <EditText
+            android:id="@+id/editTextNumber4"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@+id/textViewMaximumDuration"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMaximumDuration" />
+
+        <TextView
+            android:id="@+id/textViewReservationDeadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Reservation Deadline"
+            app:layout_constraintStart_toStartOf="@+id/editTextNumber4"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber4" />
+
+        <EditText
+            android:id="@+id/editTextNumberReservataionDeadline"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@+id/textViewReservationDeadline"
+            app:layout_constraintTop_toBottomOf="@+id/textViewReservationDeadline" />
+
+        <TextView
+            android:id="@+id/textViewCancelationDeadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:text="Cancelation Deadline"
+            app:layout_constraintStart_toStartOf="@+id/editTextNumberReservataionDeadline"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumberReservataionDeadline" />
+
+        <EditText
+            android:id="@+id/editTextNumberCancelationDeadline"
+            android:layout_width="240dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/textview_border"
+            android:ems="10"
+            android:inputType="number"
+            app:layout_constraintStart_toStartOf="@+id/textViewCancelationDeadline"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCancelationDeadline" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="56dp"
+            android:backgroundTint="@color/orange"
+            android:text="Save"
+            app:layout_constraintStart_toStartOf="@+id/checkBox9"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox9" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:text="Applicable Events"
+            app:layout_constraintStart_toStartOf="@+id/textViewCancelationDeadline"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumberCancelationDeadline" />
+
+        <CheckBox
+            android:id="@+id/checkBox6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Wedding"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <CheckBox
+            android:id="@+id/checkBox8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Birthday"
+            app:layout_constraintStart_toStartOf="@+id/checkBox6"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+
+        <CheckBox
+            android:id="@+id/checkBox9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Puppet Show"
+            app:layout_constraintStart_toStartOf="@+id/checkBox8"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox8" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:backgroundTint="@color/orange"
+            android:text="Cancel"
+            app:layout_constraintStart_toEndOf="@+id/button"
+            app:layout_constraintTop_toTopOf="@+id/button" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

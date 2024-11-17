@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">Katenda</string>
+    <string name="category">Category</string>
+    <string-array name="service_categories">
+        <item>Music</item>
+        <item>Window cleaning</item>
+        <item>Choir</item>
+        <item>Cooking</item>
+        <item>Photographing</item>
+    </string-array>
+    <string-array name="event_categories">
+        <item>□   Wedding</item>
+        <item>□   Birthday</item>
+        <item>□   Comedy</item>
+        <item>□   Party</item>
+    </string-array>
     <string name="registerOdTitle">REGISTER</string>
     <string name="registerPUPTitle">SERVICE PROVIDER REGISTER</string>
     <string name="email">E-mail</string>
