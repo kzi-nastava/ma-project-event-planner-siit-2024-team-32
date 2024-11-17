@@ -19,6 +19,9 @@
             android:name=".activities.ServiceManagementActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.RegisterServiceAndProductProviderActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.SplashScreenActivity"
             android:exported="true">
             <intent-filter>

@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,64 +13,62 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.eventplanner.R;
-import com.example.eventplanner.databinding.ActivityLoginBinding;
-import com.example.eventplanner.databinding.ActivityRegisterBinding;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterServiceAndProductProviderActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityRegisterBinding binding = ActivityRegisterBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        Log.d("Katenda", "RegisterActivity onCreate()");
-        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
-        Button registerButton = findViewById(R.id.RegisterButton);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_register_service_and_product_provider);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+        Button registerButton = findViewById(R.id.RegisterButtonn);
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                Intent intent = new Intent(RegisterServiceAndProductProviderActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
-
     }
-
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("Katenda", "RegisterActivity onStart()");
+        Log.d("Katenda", "RegisterPUPActivity onStart()");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.d("Katenda", "RegisterActivity onRestart()");
+        Log.d("Katenda", "RegisterPUPActivity onRestart()");
     }
 
     @Override
     protected void onResume(){
         super.onResume();
-        Log.d("Katenda", "RegisterActivity onResume()");
+        Log.d("Katenda", "RegisterPUPActivity onResume()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("Katenda", "RegisterActivity onPause()");
+        Log.d("Katenda", "RegisterPUPActivity onPause()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("Katenda", "RegisterActivity onStop()");
+        Log.d("Katenda", "RegisterPUPActivity onStop()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("Katenda", "RegisterActivity onDestroy()");
+        Log.d("Katenda", "RegisterPUPActivity onDestroy()");
     }
 }
