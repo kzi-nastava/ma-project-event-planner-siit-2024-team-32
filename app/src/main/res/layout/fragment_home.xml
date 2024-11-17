@@ -57,6 +57,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center|center_vertical"
+                        android:onClick="goToLoginActivity"
                         android:text="Log in" />
                 </FrameLayout>
 
@@ -70,10 +71,11 @@
 
                 <ImageView
                     android:id="@+id/profilePictureImage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
+                    android:layout_width="135dp"
+                    android:layout_height="135dp"
                     android:paddingLeft="12dp"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/guest_user_icon"
                     tools:src="@tools:sample/avatars" />
 
                 <LinearLayout

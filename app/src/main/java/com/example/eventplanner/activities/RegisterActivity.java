@@ -27,7 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Log.d("Katenda", "RegisterActivity onCreate()");
-        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
         Button registerButton = findViewById(R.id.RegisterButton);
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -37,7 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     @Override

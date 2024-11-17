@@ -115,13 +115,13 @@
         app:layout_constraintTop_toBottomOf="@+id/surname" />
 
     <EditText
-        android:id="@+id/address"
+        android:id="@+id/country"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/textview_border"
         android:ems="10"
-        android:hint="@string/address"
+        android:hint="@string/country"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/phone"
         app:layout_constraintEnd_toEndOf="parent"
