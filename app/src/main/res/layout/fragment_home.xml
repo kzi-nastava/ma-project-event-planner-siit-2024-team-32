@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/goldenrod"
+
     tools:context=".fragments.HomeFragment">
 
     <ScrollView
@@ -25,6 +25,8 @@
                     android:id="@+id/appLogoImage"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
+                    android:background="@drawable/rounded_image_background"
+                    android:radius="50dp"
                     android:src="@drawable/ic_launcher_foreground" />
 
                 <TextView
@@ -50,6 +52,7 @@
 
                     <Button
                         android:id="@+id/logInButton"
+                        android:backgroundTint="@color/orange"
                         style="@style/Widget.Material3.Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -69,6 +72,7 @@
                     android:id="@+id/profilePictureImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:paddingLeft="12dp"
                     tools:src="@tools:sample/avatars" />
 
@@ -136,6 +140,7 @@
 
             <TextView
                 android:id="@+id/descriptionText"
+                android:textColor="@color/orange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="12dp"

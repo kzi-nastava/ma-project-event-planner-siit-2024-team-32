@@ -5,30 +5,38 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_orange"
+
     tools:context=".activities.RegisterServiceAndProductProviderActivity">
+
+    <ImageView
+        android:id="@+id/appLogoImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rounded_image_background"
+        android:radius="50dp"
+        android:src="@drawable/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/registerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:text="@string/registerPUPTitle"
         android:textAlignment="center"
+        android:textColor="@color/orange"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="130dp"
-        android:background="@color/white"
+        android:background="@drawable/textview_border"
         android:ems="10"
         android:hint="@string/companyName"
         android:inputType="text"
@@ -42,7 +50,7 @@
         android:layout_width="300dp"
         android:layout_height="150dp"
         android:layout_marginTop="5dp"
-        android:background="@color/white"
+        android:background="@drawable/textview_border"
         android:ems="10"
         android:hint="@string/description"
         android:inputType="text"
@@ -55,7 +63,7 @@
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/dark_blue"
+        android:backgroundTint="@color/orange"
         android:text="@string/registerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         tools:context=".activities.ServiceManagementActivity">
 
+
         <TextView
             android:id="@+id/textViewCategory"
             android:layout_width="wrap_content"
