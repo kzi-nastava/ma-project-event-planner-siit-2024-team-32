@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".fragments.HomeFragment">
+    tools:context=".fragments.ServiceAndProductProviderHomeFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -58,7 +57,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center|center_vertical"
                         android:onClick="goToLoginActivity"
-                        android:text="Log in" />
+                        android:text="Log out" />
                 </FrameLayout>
 
             </LinearLayout>
@@ -90,28 +89,28 @@
                         android:id="@+id/usernameText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Guest user"
+                        android:text="Igor's company"
                         android:textSize="30sp" />
 
                     <TextView
                         android:id="@+id/emailText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Serbia, Novi Sad"
+                        android:text="igor.igoric@gmail.com"
                         android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/phoneNumberText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="+381608594859"
                         android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/locationText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=""
+                        android:text="Serbia, Novi Sad"
                         android:textSize="17sp" />
 
                 </LinearLayout>
@@ -127,8 +126,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="#00FFFFFF"
-                        android:src="@drawable/baseline_settings_24"
-                        android:visibility="invisible" />
+                        android:src="@drawable/baseline_settings_24" />
 
                     <ImageButton
                         android:id="@+id/imageButton2"
@@ -136,8 +134,7 @@
                         android:layout_height="wrap_content"
                         android:background="#00FFFFFF"
                         android:paddingTop="10dp"
-                        android:src="@drawable/baseline_image_24"
-                        android:visibility="invisible" />
+                        android:src="@drawable/baseline_image_24" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -150,7 +147,7 @@
                 android:paddingLeft="12dp"
                 android:paddingTop="8dp"
                 android:paddingRight="12dp"
-                android:text=""
+                android:text="Igor's company is an innovative company delivering cutting-edge products and services, focused on excellence and customer satisfaction."
                 android:textAlignment="center"
                 android:textSize="18dp" />
 
@@ -201,7 +198,6 @@
                 <include layout="@layout/service_card"/>
 
                 <include layout="@layout/service_card"/>
-
             </LinearLayout>
 
             <TextView

@@ -1,7 +1,10 @@
 package com.example.eventplanner.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +17,10 @@ import com.example.eventplanner.databinding.ActivityHomeBinding;
 import com.example.eventplanner.fragments.EventsFragment;
 import com.example.eventplanner.fragments.HomeFragment;
 import com.example.eventplanner.fragments.ProductsFragment;
+import com.example.eventplanner.fragments.ServiceAndProductProviderHomeFragment;
 import com.example.eventplanner.fragments.ServicesFragment;
+
+import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -23,13 +29,41 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityHomeBinding binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new HomeFragment());
+        String status = "default";
+
+        try {
+            Bundle bundle = getIntent().getExtras();
+            status = bundle.getString("status");
+        }
+        catch(Exception e) {
+            status = "default";
+        }
+
+        String finalStatus = status;
+
+        try {
+            if (Objects.equals(finalStatus, "loggedIn")) {
+                replaceFragment(new ServiceAndProductProviderHomeFragment());
+            } else {
+                replaceFragment(new HomeFragment());
+            }
+        } catch(Exception e) {
+            replaceFragment(new HomeFragment());
+        }
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
 
             if (itemId == R.id.navigationBarHome) {
-                replaceFragment(new HomeFragment());
+                try {
+                    if (Objects.equals(finalStatus, "loggedIn")) {
+                        replaceFragment(new ServiceAndProductProviderHomeFragment());
+                    } else {
+                        replaceFragment(new HomeFragment());
+                    }
+                } catch(Exception e) {
+                    replaceFragment(new HomeFragment());
+                }
             } else if (itemId == R.id.navigationBarEvents) {
                 replaceFragment(new EventsFragment());
             } else if (itemId == R.id.navigationBarServices) {
@@ -43,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
         Log.d("Katenda", "HomeActivity onCreate()");
-        Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
     }
 
     private void replaceFragment(Fragment newFragment) {
@@ -51,6 +85,16 @@ public class HomeActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.homeFrameLayout, newFragment);
         fragmentTransaction.commit();
+    }
+
+    public void goToLoginActivity(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToServiceEditActivity(View view) {
+        Intent intent = new Intent(this, ServiceEditActivity.class);
+        startActivity(intent);
     }
 
     @Override
