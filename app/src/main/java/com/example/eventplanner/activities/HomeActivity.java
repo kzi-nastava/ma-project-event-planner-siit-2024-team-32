@@ -41,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
             return true;
         });
 
+
         Log.d("Katenda", "HomeActivity onCreate()");
         Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
     }
