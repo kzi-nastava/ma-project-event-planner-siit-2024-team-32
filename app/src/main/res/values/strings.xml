@@ -32,4 +32,14 @@
     <string name="goToRegister">Don\'t have an account?</string>
     <string name="companyName">Company Name</string>
     <string name="description">Description</string>
+
+    <string-array name="privacy">
+        <item>public</item>
+        <item>private</item>
+    </string-array>
+
+    <string-array name="eventType">
+        <item>wedding</item>
+        <item>birthday</item>
+    </string-array>
 </resources>

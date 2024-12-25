@@ -13,6 +13,27 @@
         android:theme="@style/Theme.EventPlanner"
         tools:targetApi="31">
         <activity
+            android:name=".activities.EventCreationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DisplayCompanyInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DisplayPersonalInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.UpdateCompanyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.UpdatePersonalInformationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EventTypeUpdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EventTypeCreationActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.CheckServiceActivity"
             android:exported="false" />
         <activity
