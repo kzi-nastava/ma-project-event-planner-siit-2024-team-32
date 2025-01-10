@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.eventplanner.model.RegisteredUser;
 import com.example.eventplanner.R;
 import com.example.eventplanner.activities.HomeActivity;
+import com.example.eventplanner.clients.ClientUtils;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -129,8 +138,26 @@ public class RegisterFragment extends Fragment {
             }
             if(isValidInput(email1,password1,passwordRewrite1,name1,surname1,town1,country1,address1,phone1) && isValidEmail(email1) && isValidPhoneNumber(phone1) && password1.equals(passwordRewrite1)){
                 Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                startActivity(intent);
+                Call<RegisteredUser> call = ClientUtils.registeredUserService.add(new RegisteredUser(1,email1,password1,name1,surname1,phone1,town1,address1,country1));
+                call.enqueue(new Callback<RegisteredUser>() {
+                    @Override
+                    public void onResponse(Call<RegisteredUser> call, Response<RegisteredUser> response) {
+                        if(response.code()==200){
+                            Log.i("rez", String.valueOf(response.body()));
+                        }
+                        else{
+                            Log.i("rez", String.valueOf(response.body()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<RegisteredUser> call, Throwable t) {
+                        Log.d("REZ",t.getMessage()!=null?t.getMessage():"error");
+                    }
+
+                });
+                //Intent intent = new Intent(getActivity(), HomeActivity.class);
+                //startActivity(intent);
             }
 
         });
