@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.UpdateCompanyFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="@color/white">
+
+        <!-- Naslov -->
+        <TextView
+            android:id="@+id/UpdateInfoTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UPDATE COMPANY INFORMATION"
+            android:textColor="@color/orange"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="32dp" />
+
+        <EditText
+            android:id="@+id/curPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Current Password"
+            android:inputType="textPassword"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/newPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="New Password"
+            android:inputType="textPassword"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/newPasswordConf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="New Password Confirmation"
+            android:inputType="textPassword"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First Name"
+            android:inputType="text"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/lastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Last Name"
+            android:inputType="text"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:inputType="text"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Country"
+            android:inputType="text"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="City"
+            android:inputType="text"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Address"
+            android:inputType="text"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone"
+            android:inputType="text"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+        <!-- Dugme za Log in -->
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:backgroundTint="@color/orange"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+</FrameLayout>

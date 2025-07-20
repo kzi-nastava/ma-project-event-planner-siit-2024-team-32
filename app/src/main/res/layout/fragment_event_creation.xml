@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.EventCreationFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvLoginTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="EVENT CREATION"
+            android:textColor="@color/orange"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/textview_border"
+            android:hint="Name"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@color/orange" />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/textview_border"
+            android:hint="Description"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@color/orange" />
+
+        <EditText
+            android:id="@+id/participants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/textview_border"
+            android:hint="Number of participants(number only)"
+            android:inputType="number"
+            android:padding="12dp"
+            android:textColor="@color/orange" />
+
+        <EditText
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/textview_border"
+            android:hint="City"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@color/orange" />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/textview_border"
+            android:hint="Address"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@color/orange" />
+
+        <EditText
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/textview_border"
+            android:hint="Country"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@color/orange" />
+
+
+        <EditText
+            android:id="@+id/dateTimeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Choose beginning date and time"
+            android:focusable="false"
+            android:clickable="true"
+            android:inputType="none" />
+
+        <Spinner
+            android:id="@+id/spinner_privacy"
+            android:layout_marginBottom="8dp"
+            android:spinnerMode="dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F44336"
+            android:visibility="gone" />   <!-- Početno sakriveno -->
+        <Spinner
+            android:id="@+id/spinner_event_type"
+            android:layout_marginBottom="8dp"
+            android:spinnerMode="dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/error_message1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F44336"
+            android:visibility="gone" />
+        <Button
+            android:id="@+id/btnCreate"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/orange"
+            android:text="Create"
+            android:textColor="@color/white" />
+
+
+
+    </LinearLayout>
+
+</FrameLayout>

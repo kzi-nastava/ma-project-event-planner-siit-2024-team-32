@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.EventTypeCreationFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="@color/white">
+
+        <!-- Naslov -->
+        <TextView
+            android:id="@+id/creationTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EVENT TYPE CREATION"
+            android:textColor="@color/orange"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="32dp" />
+
+        <!-- EditText za Email -->
+        <EditText
+            android:id="@+id/typeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Type name"
+            android:inputType="text"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <!-- EditText za Password -->
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:inputType="text"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="active"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:inputType="none"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/recServiceCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Recommended service categories"
+            android:inputType="text"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Dugme za Log in -->
+        <Button
+            android:id="@+id/createBtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Create"
+            android:backgroundTint="@color/orange"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp" />
+
+    </LinearLayout>
+
+</FrameLayout>

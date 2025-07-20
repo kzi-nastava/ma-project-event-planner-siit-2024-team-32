@@ -1,14 +1,32 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.eventplanner.R;
+import com.example.eventplanner.activities.DisplayCategoriesForSppActivity;
+import com.example.eventplanner.activities.DisplayCompanyInfoActivity;
+import com.example.eventplanner.activities.DisplayEventTypesForSppActivity;
+import com.example.eventplanner.activities.DisplayPersonalInfoActivity;
+import com.example.eventplanner.activities.EventCreationActivity;
+import com.example.eventplanner.activities.EventTypeCreationActivity;
+import com.example.eventplanner.activities.EventTypeUpdateActivity;
+import com.example.eventplanner.activities.UpdateCompanyActivity;
+import com.example.eventplanner.clients.ClientUtils;
+import com.example.eventplanner.model.EventOrganizer;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +79,79 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView= inflater.inflate(R.layout.fragment_home, container, false);
+
+        Button etCreationButton = rootView.findViewById(R.id.etCreation);
+
+        etCreationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EventTypeCreationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button etUpdateButton = rootView.findViewById(R.id.etUpdate);
+
+        etUpdateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EventTypeUpdateActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button eCreationButton = rootView.findViewById(R.id.eCreation);
+
+        eCreationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EventCreationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button displayPersonalButton = rootView.findViewById(R.id.displayPersonal);
+
+        displayPersonalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DisplayPersonalInfoActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        Button displayCompanyButton = rootView.findViewById(R.id.displayCompany);
+
+        displayCompanyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DisplayCompanyInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button displayEtForSpp = rootView.findViewById(R.id.displayEtForSpp);
+
+        displayEtForSpp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DisplayEventTypesForSppActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button displayCatForSpp = rootView.findViewById(R.id.displayCatForSpp);
+
+        displayCatForSpp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DisplayCategoriesForSppActivity.class);
+                startActivity(intent);
+            }
+        });
+        return rootView;
+
     }
 }
