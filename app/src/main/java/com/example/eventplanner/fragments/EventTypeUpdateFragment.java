@@ -1,17 +1,30 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.eventplanner.R;
+import com.example.eventplanner.activities.HomeActivity;
+import com.example.eventplanner.clients.ClientUtils;
+import com.example.eventplanner.model.Event;
+import com.example.eventplanner.model.EventType;
+import com.example.eventplanner.model.UpdateEventType;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,22 +78,52 @@ public class EventTypeUpdateFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_event_type_update, container, false);
+
+        Spinner spinner=rootView.findViewById(R.id.spinner_status);
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(getContext(), R.array.status, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+
         EditText description = rootView.findViewById(R.id.description);
         EditText  category= rootView.findViewById(R.id.recServiceCategory);
         Button updateButton = rootView.findViewById(R.id.updateBtn);
 
         updateButton.setOnClickListener(v -> {
-            String inputText1 = description.getText().toString();
-            String inputText2=category.getText().toString();
-            if (isNotEmpty(inputText1,inputText2)) {
+            String status=spinner.getSelectedItem().toString();
+            String description1 = description.getText().toString();
+            String categories=category.getText().toString();
+            if (isNotEmpty(description1,categories,status)) {
                 Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
+                Call<UpdateEventType> call = ClientUtils.eventService.updateEt(1,new UpdateEventType(1,description1,status,categories));
+                call.enqueue(new Callback<UpdateEventType>() {
+                    @Override
+                    public void onResponse(Call<UpdateEventType> call, Response<UpdateEventType> response) {
+                        if(response.code()==201){
+                            Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
+                            Log.i("rez", String.valueOf(response.body()));
+                            Intent intent = new Intent(getActivity(), HomeActivity.class);
+                            startActivity(intent);
+                        }
+
+                        else{
+                            Log.i("rez", String.valueOf(response.code()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<UpdateEventType> call, Throwable t) {
+                        Log.d("REZ",t.getMessage()!=null?t.getMessage():"error");
+                    }
+
+                });
+
             } else {
                 Toast.makeText(requireContext(), "At least one field must be filled!", Toast.LENGTH_SHORT).show();
             }
         });
         return rootView;
     }
-    private boolean isNotEmpty(String input1,String input2) {
-        return !input1.isEmpty() || !input2.isEmpty();
+    private boolean isNotEmpty(String input1,String input2, String input3) {
+        return !input1.isEmpty() || !input2.isEmpty() || !input3.isEmpty();
     }
 }

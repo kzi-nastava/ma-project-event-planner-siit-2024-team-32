@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.eventplanner.R;
 import com.example.eventplanner.activities.EventTypeCreationActivity;
 import com.example.eventplanner.activities.HomeActivity;
+import com.example.eventplanner.activities.NavigateToRegisterActivity;
 import com.example.eventplanner.activities.RegisterActivity;
 
 /**
@@ -99,7 +100,7 @@ public class LoginFragment extends Fragment {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), RegisterActivity.class);
+                Intent intent = new Intent(getActivity(), NavigateToRegisterActivity.class);
                 startActivity(intent);
             }
         });

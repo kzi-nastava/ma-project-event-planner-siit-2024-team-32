@@ -107,14 +107,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F44336"
+            android:visibility="gone" />   <!-- Početno sakriveno -->
         <Spinner
             android:id="@+id/spinner_event_type"
             android:layout_marginBottom="8dp"
             android:spinnerMode="dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+        <TextView
+            android:id="@+id/error_message1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F44336"
+            android:visibility="gone" />
         <Button
             android:id="@+id/btnCreate"
             android:layout_width="250dp"

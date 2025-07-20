@@ -50,6 +50,20 @@
             android:layout_marginBottom="8dp" />
 
         <EditText
+            android:id="@+id/status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="active"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:cursorVisible="false"
+            android:inputType="none"
+            android:background="@drawable/textview_border"
+            android:padding="12dp"
+            android:textColor="@color/orange"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
             android:id="@+id/recServiceCategory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

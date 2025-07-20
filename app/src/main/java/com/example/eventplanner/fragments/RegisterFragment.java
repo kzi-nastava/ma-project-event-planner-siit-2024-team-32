@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.eventplanner.model.RegisteredUser;
+import com.example.eventplanner.model.EventOrganizer;
 import com.example.eventplanner.R;
 import com.example.eventplanner.activities.HomeActivity;
 import com.example.eventplanner.clients.ClientUtils;
@@ -137,21 +137,26 @@ public class RegisterFragment extends Fragment {
                 phone.setError("Invalid phone number.");
             }
             if(isValidInput(email1,password1,passwordRewrite1,name1,surname1,town1,country1,address1,phone1) && isValidEmail(email1) && isValidPhoneNumber(phone1) && password1.equals(passwordRewrite1)){
-                Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
-                Call<RegisteredUser> call = ClientUtils.registeredUserService.add(new RegisteredUser(1,email1,password1,name1,surname1,phone1,town1,address1,country1));
-                call.enqueue(new Callback<RegisteredUser>() {
+                Call<EventOrganizer> call = ClientUtils.registeredUserService.add(new EventOrganizer(1,email1,password1,name1,surname1,phone1,town1,address1,country1));
+                call.enqueue(new Callback<EventOrganizer>() {
                     @Override
-                    public void onResponse(Call<RegisteredUser> call, Response<RegisteredUser> response) {
-                        if(response.code()==200){
+                    public void onResponse(Call<EventOrganizer> call, Response<EventOrganizer> response) {
+                        if(response.code()==201){
+                            Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
                             Log.i("rez", String.valueOf(response.body()));
+                            Intent intent = new Intent(getActivity(), HomeActivity.class);
+                            startActivity(intent);
+                        }
+                        else if(response.code()==409){
+                            email.setError("User with this email already exists.");
                         }
                         else{
-                            Log.i("rez", String.valueOf(response.body()));
+                            Log.i("rez", String.valueOf(response.code()));
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<RegisteredUser> call, Throwable t) {
+                    public void onFailure(Call<EventOrganizer> call, Throwable t) {
                         Log.d("REZ",t.getMessage()!=null?t.getMessage():"error");
                     }
 

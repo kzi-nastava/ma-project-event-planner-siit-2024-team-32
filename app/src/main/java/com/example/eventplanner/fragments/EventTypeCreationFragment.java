@@ -1,9 +1,11 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.eventplanner.R;
+import com.example.eventplanner.activities.HomeActivity;
+import com.example.eventplanner.clients.ClientUtils;
+import com.example.eventplanner.model.EventOrganizer;
+import com.example.eventplanner.model.EventType;
+import com.example.eventplanner.model.EventTypeStatus;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,15 +77,47 @@ public class EventTypeCreationFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_event_type_creation, container, false);
 
-        EditText editText = rootView.findViewById(R.id.typeName);
+        EditText name = rootView.findViewById(R.id.typeName);
+        EditText description = rootView.findViewById(R.id.description);
+        EditText status = rootView.findViewById(R.id.status);
+        EditText recServiceCategory=rootView.findViewById(R.id.recServiceCategory);
+
         Button createButton = rootView.findViewById(R.id.createBtn);
 
         createButton.setOnClickListener(v -> {
-            String inputText = editText.getText().toString();
-            if (isValidInput(inputText)) {
-                Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
-            } else {
-                editText.setError("This field is required.");
+            String name1 = name.getText().toString();
+            String description1 = description.getText().toString();
+            EventTypeStatus status1 = EventTypeStatus.valueOf(status.getText().toString());
+            String recServiceCategory1 = recServiceCategory.getText().toString();
+
+            if(!isValidInput(name1)){
+                name.setError("This field is required.");
+            }
+            if (isValidInput(name1)) {
+                Call<EventType> call = ClientUtils.eventService.addEt(new EventType(1,name1,description1,status1,recServiceCategory1));
+                call.enqueue(new Callback<EventType>() {
+                    @Override
+                    public void onResponse(Call<EventType> call, Response<EventType> response) {
+                        if(response.code()==201){
+                            Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
+                            Log.i("rez", String.valueOf(response.body()));
+                            Intent intent = new Intent(getActivity(), HomeActivity.class);
+                            startActivity(intent);
+                        }
+                        else if(response.code()==409){
+                            name.setError("Event type with this name already exists.");
+                        }
+                        else{
+                            Log.i("rez", String.valueOf(response.code()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<EventType> call, Throwable t) {
+                        Log.d("REZ",t.getMessage()!=null?t.getMessage():"error");
+                    }
+
+                });
             }
         });
         return rootView;

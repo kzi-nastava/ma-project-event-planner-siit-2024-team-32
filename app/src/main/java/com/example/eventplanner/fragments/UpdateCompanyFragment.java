@@ -1,9 +1,11 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.eventplanner.R;
+import com.example.eventplanner.activities.HomeActivity;
+import com.example.eventplanner.clients.ClientUtils;
+import com.example.eventplanner.model.UpdateEventOrganizer;
+import com.example.eventplanner.model.UpdateServiceAndProductProvider;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -66,6 +76,11 @@ public class UpdateCompanyFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_update_company, container, false);
 
+        EditText curPassword=rootView.findViewById(R.id.curPassword);
+        EditText newPassword=rootView.findViewById(R.id.newPassword);
+        EditText newPasswordConf=rootView.findViewById(R.id.newPasswordConf);
+        EditText name = rootView.findViewById(R.id.firstName);
+        EditText surname = rootView.findViewById(R.id.lastName);
         EditText description = rootView.findViewById(R.id.description);
         EditText country= rootView.findViewById(R.id.country);
         EditText city= rootView.findViewById(R.id.city);
@@ -75,27 +90,74 @@ public class UpdateCompanyFragment extends Fragment {
         Button updateButton = rootView.findViewById(R.id.updateBtn);
 
         updateButton.setOnClickListener(v -> {
+            String curPassword1=curPassword.getText().toString();
+            String newPassword1=newPassword.getText().toString();
+            String newPasswordConf1=newPasswordConf.getText().toString();
+            String name1=name.getText().toString();
+            String surname1 = surname.getText().toString();
             String description1 = description.getText().toString();
             String country1=country.getText().toString();
             String city1=city.getText().toString();
             String address1=address.getText().toString();
             String phone1=phone.getText().toString();
-            if ((isNotEmpty(description1,country1,city1,address1)&& !phone1.isEmpty() && isValidPhoneNumber(phone1))||(!isNotEmpty(description1,country1,city1,address1)&&!phone1.isEmpty() && isValidPhoneNumber(phone1))||(isNotEmpty(description1,country1,city1,address1)&& phone1.isEmpty())) {
-                Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
-            }
-            if(!phone1.isEmpty() && !isValidPhoneNumber(phone1))
-            {
+            if (!phone1.isEmpty() && !isValidPhoneNumber(phone1)) {
                 phone.setError("Invalid phone number");
             }
-            if (!isNotEmpty(description1,country1,city1,address1) && phone1.isEmpty()){
-                Toast.makeText(requireContext(), "At least one field must be filled!", Toast.LENGTH_SHORT).show();
+            if((curPassword1.isEmpty() || newPassword1.isEmpty() || newPasswordConf1.isEmpty()) && !isEmpty(curPassword1,newPassword1,newPasswordConf1)){
+                Toast.makeText(requireContext(), "If one password field is filled, all three must be filled!", Toast.LENGTH_SHORT).show();
+            }
+            if(!newPassword1.isEmpty() && !newPasswordConf1.isEmpty() && !newPassword1.equals(newPasswordConf1)){
+                newPasswordConf.setError("Must be equal to new password field.");
+            }
+            if(!isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1,description1)){
+                Toast.makeText(requireContext(), "At least one field must be filled", Toast.LENGTH_SHORT).show();
+            }
+            if((isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1,description1) && phone1.isEmpty() && isEmpty(curPassword1,newPassword1,newPasswordConf1))||
+                    (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1,description1) && !phone1.isEmpty() && isValidPhoneNumber(phone1) && isEmpty(curPassword1,newPassword1,newPasswordConf1))||
+                    (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1,description1) && phone1.isEmpty() && isNotEmpty(curPassword1,newPassword1,newPasswordConf1) && newPassword1.equals(newPasswordConf1))||
+                    (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1,description1) && !phone1.isEmpty() && isValidPhoneNumber(phone1) && isNotEmpty(curPassword1,newPassword1,newPasswordConf1) && newPassword1.equals(newPasswordConf1))){
+                Toast.makeText(requireContext(), "Valid input", Toast.LENGTH_SHORT).show();
+                Call<UpdateServiceAndProductProvider> call = ClientUtils.registeredUserService.updateSpp(7,new UpdateServiceAndProductProvider(1,newPassword1,name1,surname1,phone1,city1,address1,country1,description1));
+                call.enqueue(new Callback<UpdateServiceAndProductProvider>() {
+                    @Override
+                    public void onResponse(Call<UpdateServiceAndProductProvider> call, Response<UpdateServiceAndProductProvider> response) {
+                        if(response.code()==201 || response.code()==200){
+                            Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
+                            Log.i("rez", String.valueOf(response.body()));
+                            Intent intent = new Intent(getActivity(), HomeActivity.class);
+                            startActivity(intent);
+                        }
+                        else if(response.code()==404){
+                            Toast.makeText(requireContext(), "User with this id does not exist.", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Log.i("rez", String.valueOf(response.code()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<UpdateServiceAndProductProvider> call, Throwable t) {
+                        Log.d("REZ",t.getMessage()!=null?t.getMessage():"error");
+                    }
+
+                });
             }
         });
         return rootView;
     }
-    private boolean isNotEmpty(String input1,String input2,String input3,String input4) {
-        return !input1.isEmpty() || !input2.isEmpty() ||
-                !input3.isEmpty() ||!input4.isEmpty();
+    private boolean isNotEmpty(String input1,String input2, String input3){
+        return !input1.isEmpty() && !input2.isEmpty() && !input3.isEmpty();
+    }
+    private boolean isEmpty(String input1,String input2,String input3) {
+        return input1.isEmpty() && input2.isEmpty() &&
+                input3.isEmpty();
+    }
+    private boolean isNotEmpty(String input1,String input2,String input3,String input4,
+                               String input5,String input6,String input7,String input8,
+                               String input9,String input10) {
+        return !input1.isEmpty() || !input2.isEmpty() || !input3.isEmpty() ||
+                !input4.isEmpty() || !input5.isEmpty() || !input6.isEmpty() ||
+                !input7.isEmpty() || !input8.isEmpty() || !input9.isEmpty() || !input10.isEmpty();
     }
     public static boolean isValidPhoneNumber(String phoneNumber) {
         // Uklanjamo razmake i crtice iz broja telefona

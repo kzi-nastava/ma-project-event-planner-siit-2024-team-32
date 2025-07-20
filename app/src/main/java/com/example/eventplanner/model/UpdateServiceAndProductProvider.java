@@ -3,14 +3,10 @@ package com.example.eventplanner.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class RegisteredUser {
+public class UpdateServiceAndProductProvider {
     @SerializedName("id")
     @Expose
     private Integer id;
-
-    @SerializedName("email")
-    @Expose
-    private String email;
 
     @SerializedName("password")
     @Expose
@@ -24,9 +20,9 @@ public class RegisteredUser {
     @Expose
     private String lastName;
 
-    @SerializedName("phoneNumber")
+    @SerializedName("phone")
     @Expose
-    private String phoneNumber;
+    private String phone;
 
     @SerializedName("city")
     @Expose
@@ -39,32 +35,37 @@ public class RegisteredUser {
     @SerializedName("country")
     @Expose
     private String country;
-    public RegisteredUser(Integer id,String email,String password,String firstName,String lastName,String phoneNumber,String city,String address,String country){
-        this.id=id;
-        this.email=email;
-        this.password=password;
-        this.firstName=firstName;
-        this.lastName=lastName;
-        this.phoneNumber=phoneNumber;
-        this.city=city;
-        this.address=address;
-        this.country=country;
+
+    @SerializedName("description")
+    @Expose
+    private String description;
+
+
+    public UpdateServiceAndProductProvider(Integer id, String password, String firstName, String lastName, String phone,
+                                String city, String address, String country,String description) {
+        this.id = id;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.city = city;
+        this.address = address;
+        this.country = country;
+        this.description=description;
     }
 
     public Integer getId() {
         return id;
     }
-
-
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCountry() {
+        return country;
     }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCountry(String country) {
+        this.country = country;
     }
     public String getPassword() {
         return password;
@@ -85,10 +86,10 @@ public class RegisteredUser {
         this.lastName = lastName;
     }
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phone;
     }
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phone) {
+        this.phone = phone;
     }
     public String getCity() {
         return city;
@@ -102,15 +103,12 @@ public class RegisteredUser {
     public void setAddress(String address) {
         this.address = address;
     }
-    public String getCountry() {
-        return country;
+
+    public String getDescription() {
+        return description;
     }
 
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
-
-
-

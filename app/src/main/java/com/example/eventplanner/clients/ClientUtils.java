@@ -22,11 +22,12 @@ public class ClientUtils {
         return client;
     }
     public static Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://192.168.0.7:8080/")
+            .baseUrl("http://192.168.1.2:8080/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(test())
             .build();
 
     public static RegisteredUserService registeredUserService = retrofit.create(RegisteredUserService.class);
+    public static EventService eventService = retrofit.create(EventService.class);
 
 }

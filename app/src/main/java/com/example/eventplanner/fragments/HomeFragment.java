@@ -5,18 +5,28 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.eventplanner.R;
+import com.example.eventplanner.activities.DisplayCategoriesForSppActivity;
 import com.example.eventplanner.activities.DisplayCompanyInfoActivity;
+import com.example.eventplanner.activities.DisplayEventTypesForSppActivity;
 import com.example.eventplanner.activities.DisplayPersonalInfoActivity;
 import com.example.eventplanner.activities.EventCreationActivity;
 import com.example.eventplanner.activities.EventTypeCreationActivity;
 import com.example.eventplanner.activities.EventTypeUpdateActivity;
 import com.example.eventplanner.activities.UpdateCompanyActivity;
+import com.example.eventplanner.clients.ClientUtils;
+import com.example.eventplanner.model.EventOrganizer;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -108,6 +118,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), DisplayPersonalInfoActivity.class);
                 startActivity(intent);
+
             }
         });
 
@@ -120,6 +131,27 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        Button displayEtForSpp = rootView.findViewById(R.id.displayEtForSpp);
+
+        displayEtForSpp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DisplayEventTypesForSppActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button displayCatForSpp = rootView.findViewById(R.id.displayCatForSpp);
+
+        displayCatForSpp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DisplayCategoriesForSppActivity.class);
+                startActivity(intent);
+            }
+        });
         return rootView;
+
     }
 }

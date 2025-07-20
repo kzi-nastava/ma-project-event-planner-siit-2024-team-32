@@ -1,9 +1,11 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.eventplanner.R;
+import com.example.eventplanner.activities.HomeActivity;
+import com.example.eventplanner.clients.ClientUtils;
+import com.example.eventplanner.model.EventOrganizer;
+import com.example.eventplanner.model.UpdateEventOrganizer;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -106,6 +116,30 @@ public class UpdatePersonalInformationFragment extends Fragment {
                (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1) && phone1.isEmpty() && isNotEmpty(curPassword1,newPassword1,newPasswordConf1) && newPassword1.equals(newPasswordConf1))||
                (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1) && !phone1.isEmpty() && isValidPhoneNumber(phone1) && isNotEmpty(curPassword1,newPassword1,newPasswordConf1) && newPassword1.equals(newPasswordConf1))){
                 Toast.makeText(requireContext(), "Valid input", Toast.LENGTH_SHORT).show();
+                Call<UpdateEventOrganizer> call = ClientUtils.registeredUserService.updateEo(5,new UpdateEventOrganizer(1,newPassword1,name1,surname1,phone1,city1,address1,country1));
+                call.enqueue(new Callback<UpdateEventOrganizer>() {
+                    @Override
+                    public void onResponse(Call<UpdateEventOrganizer> call, Response<UpdateEventOrganizer> response) {
+                        if(response.code()==201 || response.code()==200){
+                            Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
+                            Log.i("rez", String.valueOf(response.body()));
+                            Intent intent = new Intent(getActivity(), HomeActivity.class);
+                            startActivity(intent);
+                        }
+                        else if(response.code()==404){
+                            Toast.makeText(requireContext(), "User with this id does not exist.", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Log.i("rez", String.valueOf(response.code()));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<UpdateEventOrganizer> call, Throwable t) {
+                        Log.d("REZ",t.getMessage()!=null?t.getMessage():"error");
+                    }
+
+                });
             }
         });
         return rootView;

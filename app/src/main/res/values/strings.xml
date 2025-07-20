@@ -34,8 +34,13 @@
     <string name="description">Description</string>
 
     <string-array name="privacy">
-        <item>public</item>
-        <item>private</item>
+        <item>open</item>
+        <item>closed</item>
+    </string-array>
+
+    <string-array name="status">
+        <item>active</item>
+        <item>deleted</item>
     </string-array>
 
     <string-array name="eventType">

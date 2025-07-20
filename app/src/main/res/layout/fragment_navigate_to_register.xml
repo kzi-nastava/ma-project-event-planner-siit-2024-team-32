@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.NavigateToRegisterFragment">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="200dp">
+
+            <TextView
+                android:id="@+id/navigateRegisterTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:text="I WANT TO REGISTER AS"
+                android:textAlignment="center"
+                android:textColor="@color/orange"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="50dp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/RegisterEoButton"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:backgroundTint="@color/orange"
+                    android:text="Event Organizer"
+                    />
+                <Button
+                    android:id="@+id/RegisterSppButton"
+                    android:layout_width="180dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/orange"
+                    android:text="Service Provider"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+
+</FrameLayout>

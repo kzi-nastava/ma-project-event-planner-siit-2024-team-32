@@ -190,6 +190,26 @@
                     android:layout_marginLeft="20dp"
                     android:backgroundTint="@color/orange"
                     android:text="Company Info"/>
+                <Button
+                    android:id="@+id/displayEtForSpp"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/orange"
+                    android:text="Event Types For Spp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
+                <Button
+                    android:id="@+id/displayCatForSpp"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/orange"
+                    android:text="Service Categories For Spp"/>
             </LinearLayout>
 
             <TextView

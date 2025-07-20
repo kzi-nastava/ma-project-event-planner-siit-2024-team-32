@@ -4,10 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.DisplayCompanyInfoFragment">
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp"
@@ -47,10 +50,76 @@
             android:inputType="none" />
 
         <TextView
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/password_input"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="1234"
+            android:background="@drawable/textview_border"
+            android:focusable="false"
+            android:clickable="false"
+            android:longClickable="false"
+            android:cursorVisible="false"
+            android:inputType="none" />
+
+        <TextView
+            android:id="@+id/first_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Name"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/first_name_input"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Igor"
+            android:background="@drawable/textview_border"
+            android:focusable="false"
+            android:clickable="false"
+            android:longClickable="false"
+            android:cursorVisible="false"
+            android:inputType="none" />
+
+        <TextView
+            android:id="@+id/last_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Name"
+            android:textColor="@color/dark_blue"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/last_name_input"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Nikolic"
+            android:background="@drawable/textview_border"
+            android:focusable="false"
+            android:clickable="false"
+            android:longClickable="false"
+            android:cursorVisible="false"
+            android:inputType="none" />
+
+        <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:text="Company Name"
             android:textColor="@color/dark_blue"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -193,6 +262,7 @@
             android:textColor="@color/white"
             android:layout_marginTop="20dp" />
     </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 
 </FrameLayout>
