@@ -1,10 +1,13 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,17 @@ import com.example.eventplanner.activities.EventTypeCreationActivity;
 import com.example.eventplanner.activities.HomeActivity;
 import com.example.eventplanner.activities.NavigateToRegisterActivity;
 import com.example.eventplanner.activities.RegisterActivity;
+import com.example.eventplanner.clients.ClientUtils;
+import com.example.eventplanner.model.DisplayEvent;
+import com.example.eventplanner.model.LogIn;
+import com.example.eventplanner.model.Token;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,16 +89,41 @@ public class LoginFragment extends Fragment {
         EditText password = rootView.findViewById(R.id.loginPasswordEditText);
 
         Button loginButton = rootView.findViewById(R.id.loginLogInButton);
-
         loginButton.setOnClickListener(v-> {
             String email1=email.getText().toString();
             String password1=password.getText().toString();
             if (isValidInput(email1,password1) && isValidEmail(email1)) {
-                Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                startActivity(intent);
+                Call<Token> callLogIn = ClientUtils.registeredUserService.logIn(new LogIn(email1,password1));
+                callLogIn.enqueue(new Callback<Token>() {
+                    @Override
+                    public void onResponse(Call<Token> call, Response<Token> response) {
+                        if(response.isSuccessful()) {
+                            SharedPreferences sharedPreferences = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("JWT_TOKEN", response.body().getToken());
+                            editor.putString("USERNAME", email1);
+                            editor.apply();
+                            Toast.makeText(requireContext(), "Successfully log in!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getActivity(), HomeActivity.class);
+                            //intent.putExtra("user", response.body().getToken());
+                            //intent.putExtra("user",email1);
+                            startActivity(intent);
+                        }
+                        else if(response.code()==409){
+                            Toast.makeText(requireContext(), "User with this credentials is deactivated!", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            Toast.makeText(requireContext(), "Error!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Token> call, Throwable t) {
+                        Log.d("REZ",t.getMessage()!=null?t.getMessage():"error");
+                    }
+                });
             }
-            if(!isValidEmail(email1)){
+            if(!isValidInput(email1)){
                 email.setError("This field is required");
             }
             if(!isValidInput(password1)){

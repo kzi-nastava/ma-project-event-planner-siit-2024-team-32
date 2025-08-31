@@ -147,7 +147,7 @@ public class RegisterServiceAndProductProviderFragment extends Fragment {
                     @Override
                     public void onResponse(Call<ServiceAndProductProvider> call, Response<ServiceAndProductProvider> response) {
                         if(response.code()==201){
-                            Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), "Successfully registered service and product provider!", Toast.LENGTH_SHORT).show();
                             Log.i("rez", String.valueOf(response.body()));
                             Intent intent = new Intent(getActivity(), HomeActivity.class);
                             startActivity(intent);
@@ -157,6 +157,7 @@ public class RegisterServiceAndProductProviderFragment extends Fragment {
                         }
                         else{
                             Log.i("rez", String.valueOf(response.code()));
+                            Toast.makeText(requireContext(), "Error!", Toast.LENGTH_SHORT).show();
                         }
                     }
 

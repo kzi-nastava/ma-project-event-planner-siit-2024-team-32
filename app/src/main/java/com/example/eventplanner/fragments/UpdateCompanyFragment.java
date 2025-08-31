@@ -1,5 +1,6 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.auth0.android.jwt.JWT;
 import com.example.eventplanner.R;
 import com.example.eventplanner.activities.HomeActivity;
 import com.example.eventplanner.clients.ClientUtils;
@@ -116,13 +118,15 @@ public class UpdateCompanyFragment extends Fragment {
                     (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1,description1) && !phone1.isEmpty() && isValidPhoneNumber(phone1) && isEmpty(curPassword1,newPassword1,newPasswordConf1))||
                     (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1,description1) && phone1.isEmpty() && isNotEmpty(curPassword1,newPassword1,newPasswordConf1) && newPassword1.equals(newPasswordConf1))||
                     (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1,description1) && !phone1.isEmpty() && isValidPhoneNumber(phone1) && isNotEmpty(curPassword1,newPassword1,newPasswordConf1) && newPassword1.equals(newPasswordConf1))){
-                Toast.makeText(requireContext(), "Valid input", Toast.LENGTH_SHORT).show();
-                Call<UpdateServiceAndProductProvider> call = ClientUtils.registeredUserService.updateSpp(7,new UpdateServiceAndProductProvider(1,newPassword1,name1,surname1,phone1,city1,address1,country1,description1));
+                String jwtToken = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE).getString("JWT_TOKEN", null);
+                JWT decodedJWT = new JWT(jwtToken);
+                String userId = decodedJWT.getClaim("id").asString();
+                Call<UpdateServiceAndProductProvider> call = ClientUtils.registeredUserService.updateSpp(Integer.parseInt(userId),new UpdateServiceAndProductProvider(1,newPassword1,name1,surname1,phone1,city1,address1,country1,description1));
                 call.enqueue(new Callback<UpdateServiceAndProductProvider>() {
                     @Override
                     public void onResponse(Call<UpdateServiceAndProductProvider> call, Response<UpdateServiceAndProductProvider> response) {
                         if(response.code()==201 || response.code()==200){
-                            Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), "Successfully updated service and product provider!", Toast.LENGTH_SHORT).show();
                             Log.i("rez", String.valueOf(response.body()));
                             Intent intent = new Intent(getActivity(), HomeActivity.class);
                             startActivity(intent);
@@ -132,6 +136,7 @@ public class UpdateCompanyFragment extends Fragment {
                         }
                         else{
                             Log.i("rez", String.valueOf(response.code()));
+                            Toast.makeText(requireContext(), "Error!", Toast.LENGTH_SHORT).show();
                         }
                     }
 

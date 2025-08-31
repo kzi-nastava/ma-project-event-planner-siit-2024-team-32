@@ -10,5 +10,7 @@
     <color name="red">#8B0000</color>
     <color name="dark_orange">#FF8C00</color>
     <color name="dark_blue">#00008B</color>
-    <color name="sky_blue">#3467ba</color>
+    <color name="sky_blue">#2D87CE</color>
+    <color name="brown">#EDC181</color>
+    <color name="darkBrown">#5B3407</color>
 </resources>

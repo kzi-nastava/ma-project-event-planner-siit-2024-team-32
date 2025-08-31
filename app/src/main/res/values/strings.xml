@@ -32,10 +32,53 @@
     <string name="goToRegister">Don\'t have an account?</string>
     <string name="companyName">Company Name</string>
     <string name="description">Description</string>
+    <string name="productCreation">PRODUCT CREATION</string>
+    <string name="productName">Product Name</string>
+    <string name="price">Price</string>
+    <string name="discount">Discount</string>
+    <string name="eventTypes">Event Types</string>
+    <string name="catRec">Category Recommendation</string>
+    <string name="createButton">CREATE</string>
+    <string name="productList">PRODUCTS I PROVIDE</string>
+    <string name="productDisplay">Product Display For Spp</string>
+    <string name="updateProduct">UPDATE PRODUCT</string>
+    <string name="updateButton">UPDATE</string>
+    <string name="searchHere">Search here</string>
+    <string name="searchButton">SEARCH</string>
+    <string name="value">Value</string>
+    <string name="filterButton">FILTER</string>
+    <string name="activityAgenda">ACTIVITY AGENDA</string>
+    <string name="addActivityButton">ADD NEW ACTIVITY</string>
+    <string name="finishButton">FINISH</string>
+    <string name="actName">Name</string>
+    <string name="place">Place</string>
+    <string name="timeFrom">Time From</string>
+    <string name="timeTo">Time To</string>
+    <string name="deleteButton">DELETE ACTIVITY</string>
+    <string name="allEvents">ALL EVENTS</string>
+    <string name="statsRatings">STATS-RATINGS</string>
+    <string name="statsParticipation">STATS-PARTICIPATION</string>
+    <string name="eventInfo">EVENT INFO</string>
+    <string name="participants">PARTICIPANTS</string>
+
+
 
     <string-array name="privacy">
         <item>open</item>
         <item>closed</item>
+    </string-array>
+
+    <string-array name="statusProduct">
+        <item>visible</item>
+        <item>invisible</item>
+        <item>pending</item>
+    </string-array>
+
+    <string-array name="statusProductUpdate">
+        <item>visible</item>
+        <item>invisible</item>
+        <item>deleted</item>
+        <item>unavailable</item>
     </string-array>
 
     <string-array name="status">
@@ -47,4 +90,32 @@
         <item>wedding</item>
         <item>birthday</item>
     </string-array>
+
+    <string-array name="allRelationsOptions">
+        <item>equals</item>
+        <item>notEquals</item>
+        <item>lower</item>
+        <item>lowerEquals</item>
+        <item>greater</item>
+        <item>greaterEquals</item>
+    </string-array>
+
+    <string-array name="equalsOnlyOptions">
+        <item>equals</item>
+        <item>notEquals</item>
+    </string-array>
+
+    <string-array name="allFilterOptions">
+        <item>category</item>
+        <item>status</item>
+        <item>eventType</item>
+        <item>price</item>
+        <item>discount</item>
+    </string-array>
+
+    <string-array name="notCSETOnlyOptions">
+        <item>price</item>
+        <item>discount</item>
+    </string-array>
+
 </resources>

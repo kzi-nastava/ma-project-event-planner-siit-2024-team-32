@@ -1,7 +1,9 @@
 package com.example.eventplanner.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -13,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.eventplanner.R;
+import com.example.eventplanner.clients.ClientUtils;
 import com.example.eventplanner.databinding.ActivityLoginBinding;
 import com.example.eventplanner.databinding.ActivitySplashScreenBinding;
 
@@ -28,7 +31,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivitySplashScreenBinding binding = ActivitySplashScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        ClientUtils.init(getApplicationContext());
         Log.d("Katenda", "SplashScreenActivity onCreate()");
         //Toast.makeText(this, "onCreate()", Toast.LENGTH_SHORT).show();
 
@@ -40,6 +43,10 @@ public class SplashScreenActivity extends AppCompatActivity {
                 finish();
             }
         }, SPLASH_TIME_OUT);
+        SharedPreferences sharedPreferences = this.getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("JWT_TOKEN");
+        editor.apply();
     }
 
     @Override

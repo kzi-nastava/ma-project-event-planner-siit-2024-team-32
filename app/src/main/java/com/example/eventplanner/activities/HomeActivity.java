@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.eventplanner.R;
+import com.example.eventplanner.clients.ClientUtils;
 import com.example.eventplanner.databinding.ActivityHomeBinding;
 import com.example.eventplanner.fragments.EventsFragment;
 import com.example.eventplanner.fragments.HomeFragment;

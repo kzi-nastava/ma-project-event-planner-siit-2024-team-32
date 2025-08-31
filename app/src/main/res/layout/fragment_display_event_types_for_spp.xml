@@ -11,7 +11,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp"
-        android:background="@color/white">
+        android:background="@color/brown">
 
     <!-- Naslov -->
     <TextView
@@ -24,22 +24,26 @@
         android:textStyle="bold"
         android:layout_marginBottom="32dp" />
 
-    <TableLayout
-        android:id="@+id/tableLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="1"
-        android:background="@drawable/table_layout_border">
-    </TableLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-    <Button
-        android:id="@+id/updateBtn"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="Update"
-        android:backgroundTint="@color/orange"
-        android:textColor="@color/white"
-        android:layout_marginTop="20dp" />
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="1"
+                android:background="@drawable/table_layout_border" />
+
+        </HorizontalScrollView>
+    </ScrollView>
+
 
     </LinearLayout>
 

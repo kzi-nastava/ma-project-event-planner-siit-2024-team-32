@@ -9,248 +9,293 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="-127dp">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="16dp"
-        android:background="@color/white">
 
-        <!-- Naslov -->
-        <TextView
-            android:id="@+id/creationTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DISPLAY PERSONAL INFORMATION"
-            android:textColor="@color/orange"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="32dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp"
+            android:background="@color/brown">
 
-        <TextView
-            android:id="@+id/email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:textColor="@color/dark_blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp" />
+            <!-- Naslov -->
+            <TextView
+                android:id="@+id/creationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DISPLAY PERSONAL INFORMATION"
+                android:textColor="@color/orange"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="32dp" />
 
-        <EditText
-            android:id="@+id/email_input"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@drawable/textview_border"
-            android:focusable="false"
-            android:clickable="false"
-            android:longClickable="false"
-            android:cursorVisible="false"
-            android:inputType="none" />
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:id="@+id/password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            android:textColor="@color/dark_blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" />
+            <EditText
+                android:id="@+id/email_input"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:background="@drawable/textview_border"
+                android:focusable="false"
+                android:clickable="false"
+                android:longClickable="false"
+                android:cursorVisible="false"
+                android:inputType="none" />
 
-        <EditText
-            android:id="@+id/password_input"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@drawable/textview_border"
-            android:focusable="false"
-            android:clickable="false"
-            android:longClickable="false"
-            android:cursorVisible="false"
-            android:inputType="none" />
+            <TextView
+                android:id="@+id/password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="FirstName"
-            android:textColor="@color/dark_blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" />
+            <EditText
+                android:id="@+id/password_input"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:background="@drawable/textview_border"
+                android:focusable="false"
+                android:clickable="false"
+                android:longClickable="false"
+                android:cursorVisible="false"
+                android:inputType="none" />
 
-        <EditText
-            android:id="@+id/name_input"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@drawable/textview_border"
-            android:focusable="false"
-            android:clickable="false"
-            android:longClickable="false"
-            android:cursorVisible="false"
-            android:inputType="none" />
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="FirstName"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:id="@+id/surname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LastName"
-            android:textColor="@color/dark_blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" />
+            <EditText
+                android:id="@+id/name_input"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:background="@drawable/textview_border"
+                android:focusable="false"
+                android:clickable="false"
+                android:longClickable="false"
+                android:cursorVisible="false"
+                android:inputType="none" />
 
-        <EditText
-            android:id="@+id/surname_input"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@drawable/textview_border"
-            android:focusable="false"
-            android:clickable="false"
-            android:longClickable="false"
-            android:cursorVisible="false"
-            android:inputType="none" />
+            <TextView
+                android:id="@+id/surname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LastName"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:id="@+id/Country"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Country"
-            android:textColor="@color/dark_blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" />
+            <EditText
+                android:id="@+id/surname_input"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:background="@drawable/textview_border"
+                android:focusable="false"
+                android:clickable="false"
+                android:longClickable="false"
+                android:cursorVisible="false"
+                android:inputType="none" />
 
-        <EditText
-            android:id="@+id/country_input"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@drawable/textview_border"
-            android:focusable="false"
-            android:clickable="false"
-            android:longClickable="false"
-            android:cursorVisible="false"
-            android:inputType="none" />
+            <TextView
+                android:id="@+id/Country"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Country"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:id="@+id/city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="City"
-            android:textColor="@color/dark_blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" />
+            <EditText
+                android:id="@+id/country_input"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:background="@drawable/textview_border"
+                android:focusable="false"
+                android:clickable="false"
+                android:longClickable="false"
+                android:cursorVisible="false"
+                android:inputType="none" />
 
-        <EditText
-            android:id="@+id/city_input"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@drawable/textview_border"
-            android:focusable="false"
-            android:clickable="false"
-            android:longClickable="false"
-            android:cursorVisible="false"
-            android:inputType="none" />
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="City"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:id="@+id/address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Address"
-            android:textColor="@color/dark_blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" />
+            <EditText
+                android:id="@+id/city_input"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:background="@drawable/textview_border"
+                android:focusable="false"
+                android:clickable="false"
+                android:longClickable="false"
+                android:cursorVisible="false"
+                android:inputType="none" />
 
-        <EditText
-            android:id="@+id/address_input"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@drawable/textview_border"
-            android:focusable="false"
-            android:clickable="false"
-            android:longClickable="false"
-            android:cursorVisible="false"
-            android:inputType="none" />
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
-        <TextView
-            android:id="@+id/phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Phone"
-            android:textColor="@color/dark_blue"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" />
+            <EditText
+                android:id="@+id/address_input"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:background="@drawable/textview_border"
+                android:focusable="false"
+                android:clickable="false"
+                android:longClickable="false"
+                android:cursorVisible="false"
+                android:inputType="none" />
 
-        <EditText
-            android:id="@+id/phone_input"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:background="@drawable/textview_border"
-            android:focusable="false"
-            android:clickable="false"
-            android:longClickable="false"
-            android:cursorVisible="false"
-            android:inputType="none" />
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp" />
 
-        <Button
-            android:id="@+id/updateBtn"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="Update"
-            android:backgroundTint="@color/orange"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp" />
+            <EditText
+                android:id="@+id/phone_input"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:background="@drawable/textview_border"
+                android:focusable="false"
+                android:clickable="false"
+                android:longClickable="false"
+                android:cursorVisible="false"
+                android:inputType="none" />
 
-        <TextView
-            android:id="@+id/Title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="FAVORITE EVENTS"
-            android:textColor="@color/orange"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="32dp" />
+            <Button
+                android:id="@+id/updateBtn"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:backgroundTint="@color/orange"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                />
 
-        <include layout="@layout/event_card"/>
-        <include layout="@layout/event_card"/>
-        <include layout="@layout/event_card"/>
+            <Button
+                android:id="@+id/deactivateBtn"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="Deactivate account"
+                android:backgroundTint="@color/orange"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"/>
 
-        <TextView
-            android:id="@+id/Title1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="FAVORITE SERVICES"
-            android:textColor="@color/orange"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="32dp" />
+            <TextView
+                android:id="@+id/Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="FAVORITE EVENTS"
+                android:textColor="@color/orange"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
 
-        <include layout="@layout/service_card"/>
-        <include layout="@layout/service_card"/>
-        <include layout="@layout/service_card"/>
+            <LinearLayout
+                android:id="@+id/favEventsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="32dp"/>
+
+            <TextView
+                android:id="@+id/Title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="FAVORITE SERVICES"
+                android:textColor="@color/orange"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:id="@+id/favServicesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="32dp"/>
+
+            <TextView
+                android:id="@+id/Title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="FAVORITE PRODUCTS"
+                android:textColor="@color/orange"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+            <LinearLayout
+                android:id="@+id/favProductsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginBottom="32dp"/>
+
+            <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
 
-    </LinearLayout>
+        </LinearLayout>
     </ScrollView>
 </FrameLayout>

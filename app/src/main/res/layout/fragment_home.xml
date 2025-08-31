@@ -57,7 +57,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center|center_vertical"
-                        android:onClick="goToLoginActivity"
                         android:text="Log in" />
                 </FrameLayout>
 
@@ -155,12 +154,12 @@
                     android:text="Event Type Creation"/>
 
                 <Button
-                    android:id="@+id/etUpdate"
+                    android:id="@+id/allEvents"
                     android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
                     android:backgroundTint="@color/orange"
-                    android:text="Event Type Update"/>
+                    android:text="Dispaly All Events"/>
 
                 <Button
                     android:id="@+id/eCreation"
@@ -210,7 +209,25 @@
                     android:layout_height="50dp"
                     android:backgroundTint="@color/orange"
                     android:text="Service Categories For Spp"/>
+
+                <Button
+                    android:id="@+id/createProduct"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/orange"
+                    android:text="Create Product"/>
+
+                <Button
+                    android:id="@+id/displayProduct"
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/orange"
+                    android:text="@string/productDisplay"/>
             </LinearLayout>
+
+
 
             <TextView
                 android:id="@+id/descriptionText"

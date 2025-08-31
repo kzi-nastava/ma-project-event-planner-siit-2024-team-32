@@ -11,7 +11,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp"
-        android:background="@color/white">
+        android:background="@color/brown">
 
         <!-- Naslov -->
         <TextView

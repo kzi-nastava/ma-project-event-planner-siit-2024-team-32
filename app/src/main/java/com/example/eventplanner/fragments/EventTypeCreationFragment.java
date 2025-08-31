@@ -1,5 +1,6 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.auth0.android.jwt.JWT;
 import com.example.eventplanner.R;
 import com.example.eventplanner.activities.HomeActivity;
 import com.example.eventplanner.clients.ClientUtils;
@@ -94,12 +96,15 @@ public class EventTypeCreationFragment extends Fragment {
                 name.setError("This field is required.");
             }
             if (isValidInput(name1)) {
-                Call<EventType> call = ClientUtils.eventService.addEt(new EventType(1,name1,description1,status1,recServiceCategory1));
+                String jwtToken = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE).getString("JWT_TOKEN", null);
+                JWT decodedJWT = new JWT(jwtToken);
+                String userId = decodedJWT.getClaim("id").asString();
+                Call<EventType> call = ClientUtils.eventService.addEt(Integer.parseInt(userId),new EventType(1,name1,description1,status1,recServiceCategory1));
                 call.enqueue(new Callback<EventType>() {
                     @Override
                     public void onResponse(Call<EventType> call, Response<EventType> response) {
-                        if(response.code()==201){
-                            Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
+                        if(response.code()==201 || response.code()==200){
+                            Toast.makeText(requireContext(), "Event type created successfully!", Toast.LENGTH_SHORT).show();
                             Log.i("rez", String.valueOf(response.body()));
                             Intent intent = new Intent(getActivity(), HomeActivity.class);
                             startActivity(intent);
@@ -107,8 +112,11 @@ public class EventTypeCreationFragment extends Fragment {
                         else if(response.code()==409){
                             name.setError("Event type with this name already exists.");
                         }
+                        else if(response.code()==400){
+                            Toast.makeText(requireContext(), "Wrong input!", Toast.LENGTH_SHORT).show();                        }
                         else{
                             Log.i("rez", String.valueOf(response.code()));
+                            Toast.makeText(requireContext(), "Error!", Toast.LENGTH_SHORT).show();
                         }
                     }
 
