@@ -92,21 +92,23 @@ public class EventTypeUpdateFragment extends Fragment {
             String status=spinner.getSelectedItem().toString();
             String description1 = description.getText().toString();
             String categories=category.getText().toString();
-            if (isNotEmpty(description1,categories,status)) {
-                Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
-                Call<UpdateEventType> call = ClientUtils.eventService.updateEt(1,new UpdateEventType(1,description1,status,categories));
+            if (isNotEmpty(description1,categories)) {
+                Call<UpdateEventType> call = ClientUtils.eventService.updateEt(requireActivity().getIntent().getIntExtra("id",0),new UpdateEventType(1,description1,status,categories));
                 call.enqueue(new Callback<UpdateEventType>() {
                     @Override
                     public void onResponse(Call<UpdateEventType> call, Response<UpdateEventType> response) {
                         if(response.code()==201){
-                            Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), "Event type updated successfully!", Toast.LENGTH_SHORT).show();
                             Log.i("rez", String.valueOf(response.body()));
                             Intent intent = new Intent(getActivity(), HomeActivity.class);
                             startActivity(intent);
                         }
-
+                        else if(response.code()==404){
+                            Toast.makeText(requireContext(), "User with this id does not exist", Toast.LENGTH_SHORT).show();
+                        }
                         else{
                             Log.i("rez", String.valueOf(response.code()));
+                            Toast.makeText(requireContext(), "Error!", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -123,7 +125,7 @@ public class EventTypeUpdateFragment extends Fragment {
         });
         return rootView;
     }
-    private boolean isNotEmpty(String input1,String input2, String input3) {
-        return !input1.isEmpty() || !input2.isEmpty() || !input3.isEmpty();
+    private boolean isNotEmpty(String input1,String input2) {
+        return !input1.isEmpty() || !input2.isEmpty();
     }
 }

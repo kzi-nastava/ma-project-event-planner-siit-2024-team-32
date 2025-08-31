@@ -9,10 +9,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:background="@color/brown">
 
         <TextView
             android:id="@+id/tvLoginTitle"
@@ -125,6 +125,18 @@
             android:layout_height="wrap_content"
             android:textColor="#F44336"
             android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/recEvType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/textview_border"
+            android:hint="Recommended event type"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="@color/orange" />
+
         <Button
             android:id="@+id/btnCreate"
             android:layout_width="250dp"

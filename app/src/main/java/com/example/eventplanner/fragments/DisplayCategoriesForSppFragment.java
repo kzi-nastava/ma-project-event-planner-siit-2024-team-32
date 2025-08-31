@@ -1,20 +1,28 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.auth0.android.jwt.JWT;
 import com.example.eventplanner.R;
+import com.example.eventplanner.activities.EventTypeUpdateActivity;
 import com.example.eventplanner.clients.ClientUtils;
+import com.example.eventplanner.model.DisplayEventType;
 import com.example.eventplanner.model.EventType;
 import com.example.eventplanner.model.ServiceAndProductCategory;
 
@@ -77,42 +85,23 @@ public class DisplayCategoriesForSppFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_display_categories_for_spp, container, false);
-        Call<Collection<ServiceAndProductCategory>> call = ClientUtils.eventService.getCategoriesForSpp(1);
+        TableLayout tableLayout = rootView.findViewById(R.id.tableLayout);
+        String jwtToken = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE).getString("JWT_TOKEN", null);
+        JWT decodedJWT = new JWT(jwtToken);
+        String userId = decodedJWT.getClaim("id").asString();
+        Call<Collection<ServiceAndProductCategory>> call = ClientUtils.eventService.getCategoriesForSpp(Integer.parseInt(userId));
         call.enqueue(new Callback<Collection<ServiceAndProductCategory>>() {
             @Override
             public void onResponse(Call<Collection<ServiceAndProductCategory>> call, Response<Collection<ServiceAndProductCategory>> response) {
                 if(response.code()==201 || response.code()==200){
-                    Collection<ServiceAndProductCategory> categories = response.body();
-
-                    for (ServiceAndProductCategory c : categories) {
-                        TableRow row = new TableRow(requireContext());
-
-                        // Kreiraj ćelije reda
-                        TextView name = new TextView(requireContext());
-                        name.setText(c.getName());
-
-                        TextView description = new TextView(requireContext());
-                        description.setText(c.getDescription());
-
-                        TextView status = new TextView(requireContext());
-                        status.setText(c.getServiceAndProductCategoryStatus());
-
-                        // Dodaj ćelije u red
-                        row.addView(name);
-                        row.addView(description);
-                        row.addView(status);
-
-                        // Dodaj red u tabelu
-                        TableLayout tableLayout = rootView.findViewById(R.id.tableLayout);
-
-                        tableLayout.addView(row);
-                    }
+                    displayCategoriesInTable(response.body(), tableLayout);
                 }
                 else if(response.code()==404){
                     Toast.makeText(requireContext(), "User with this id does not exist", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Log.i("rez", String.valueOf(response.code()));
+                    Toast.makeText(requireContext(), "Failed to load categories", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -123,5 +112,42 @@ public class DisplayCategoriesForSppFragment extends Fragment {
 
         });
         return rootView;
+    }
+
+    private void displayCategoriesInTable(Collection<ServiceAndProductCategory> sapCategories, TableLayout tableLayout) {
+        if (sapCategories == null) return;
+
+        // Header
+        TableRow rowHeader = new TableRow(requireContext());
+
+        String[] headers = {"Name","Description","ServiceAndProductCategoryStatus"};
+        for (String header : headers) {
+            TextView tv = new TextView(requireContext());
+            tv.setText(header);
+            tv.setGravity(Gravity.CENTER);
+            tv.setTextSize(15f);
+            rowHeader.addView(tv);
+        }
+
+        rowHeader.setBackgroundColor(Color.parseColor("#EC8305"));
+        tableLayout.addView(rowHeader);
+
+        for (ServiceAndProductCategory sapc: sapCategories) {
+            TableRow row = new TableRow(requireContext());
+
+            addCell(row, sapc.getName());
+            addCell(row, sapc.getDescription());
+            addCell(row, sapc.getServiceAndProductCategoryStatus());
+
+            tableLayout.addView(row);
+        }
+    }
+
+    private void addCell(TableRow row, String text) {
+        TextView tv = new TextView(requireContext());
+        tv.setText(text);
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextSize(15f);
+        row.addView(tv);
     }
 }

@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:padding="16dp"
-        android:background="@color/white">
+        android:background="@color/brown">
 
         <!-- Naslov -->
         <TextView
@@ -23,8 +23,9 @@
             android:layout_height="wrap_content"
             android:text="DISPLAY COMPANY INFORMATION"
             android:textColor="@color/orange"
-            android:textSize="23sp"
+            android:textSize="30sp"
             android:textStyle="bold"
+            android:gravity="center"
             android:layout_marginBottom="32dp" />
 
         <TextView
@@ -41,7 +42,7 @@
             android:id="@+id/email_input"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="igonik@gmail.com"
+            android:text=""
             android:background="@drawable/textview_border"
             android:focusable="false"
             android:clickable="false"
@@ -63,7 +64,7 @@
             android:id="@+id/password_input"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="1234"
+            android:text=""
             android:background="@drawable/textview_border"
             android:focusable="false"
             android:clickable="false"
@@ -85,7 +86,7 @@
             android:id="@+id/first_name_input"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Igor"
+            android:text=""
             android:background="@drawable/textview_border"
             android:focusable="false"
             android:clickable="false"
@@ -107,7 +108,7 @@
             android:id="@+id/last_name_input"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Nikolic"
+            android:text=""
             android:background="@drawable/textview_border"
             android:focusable="false"
             android:clickable="false"
@@ -130,7 +131,7 @@
             android:id="@+id/name_input"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Springfield"
+            android:text=""
             android:background="@drawable/textview_border"
             android:focusable="false"
             android:clickable="false"
@@ -153,7 +154,7 @@
             android:id="@+id/description_input"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="My company"
+            android:text=""
             android:background="@drawable/textview_border"
             android:focusable="false"
             android:clickable="false"
@@ -176,7 +177,7 @@
             android:id="@+id/country_input"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Serbia"
+            android:text=""
             android:background="@drawable/textview_border"
             android:focusable="false"
             android:clickable="false"
@@ -199,7 +200,7 @@
             android:id="@+id/city_input"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Uzice"
+            android:text=""
             android:background="@drawable/textview_border"
             android:focusable="false"
             android:clickable="false"
@@ -222,7 +223,7 @@
             android:id="@+id/address_input"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Vidovdanska 43"
+            android:text=""
             android:background="@drawable/textview_border"
             android:focusable="false"
             android:clickable="false"
@@ -245,7 +246,7 @@
             android:id="@+id/phone_input"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="0656754466"
+            android:text=""
             android:background="@drawable/textview_border"
             android:focusable="false"
             android:clickable="false"
@@ -261,6 +262,78 @@
             android:backgroundTint="@color/orange"
             android:textColor="@color/white"
             android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/deactivateBtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Deactivate account"
+            android:backgroundTint="@color/orange"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:id="@+id/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="FAVORITE EVENTS"
+            android:textColor="@color/orange"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:id="@+id/favEventsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:id="@+id/Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="FAVORITE SERVICES"
+            android:textColor="@color/orange"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:id="@+id/favServicesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:id="@+id/Title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="FAVORITE PRODUCTS"
+            android:textColor="@color/orange"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+
+        <LinearLayout
+            android:id="@+id/favProductsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="32dp"/>
+
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

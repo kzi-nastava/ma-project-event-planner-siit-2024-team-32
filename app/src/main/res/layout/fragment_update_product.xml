@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brown"
+    tools:context=".fragments.UpdateProductFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-127dp">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="16dp"
+            >
+
+            <TextView
+                android:id="@+id/creationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/updateProduct"
+                android:textColor="@color/orange"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="32dp" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:hint="@string/productName"
+                android:background="@drawable/textview_border"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/description"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/description"
+                android:background="@drawable/textview_border"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/price"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/price"
+                android:background="@drawable/textview_border"
+                android:inputType="number"/>
+
+            <EditText
+                android:id="@+id/discount"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/discount"
+                android:background="@drawable/textview_border"
+                android:inputType="number"/>
+
+            <Spinner
+                android:id="@+id/spinner_status"
+                android:layout_marginTop="10dp"
+                android:spinnerMode="dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/error_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#F44336"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/eventTypes"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/eventTypes"
+                android:background="@drawable/textview_border"
+                android:inputType="text"/>
+
+            <Button
+                android:id="@+id/updateButton"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:backgroundTint="@color/orange"
+                android:text="@string/updateButton"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>

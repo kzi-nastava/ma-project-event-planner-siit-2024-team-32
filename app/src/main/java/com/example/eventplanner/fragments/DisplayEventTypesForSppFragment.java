@@ -1,11 +1,14 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,16 +18,20 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.auth0.android.jwt.JWT;
 import com.example.eventplanner.R;
 import com.example.eventplanner.activities.DisplayEventTypesForSppActivity;
 import com.example.eventplanner.activities.DisplayPersonalInfoActivity;
 import com.example.eventplanner.activities.EventTypeUpdateActivity;
 import com.example.eventplanner.activities.HomeActivity;
+import com.example.eventplanner.activities.StatisticsActivity;
 import com.example.eventplanner.clients.ClientUtils;
+import com.example.eventplanner.model.DisplayEvent;
 import com.example.eventplanner.model.DisplayEventType;
 import com.example.eventplanner.model.EventOrganizer;
 import com.example.eventplanner.model.EventType;
 
+import java.util.Collection;
 import java.util.List;
 
 import retrofit2.Call;
@@ -83,63 +90,83 @@ public class DisplayEventTypesForSppFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_display_event_types_for_spp, container, false);
-        Call<List<DisplayEventType>> call = ClientUtils.eventService.getEventTypesForSpp(1);
-        call.enqueue(new Callback<List<DisplayEventType>>() {
+        TableLayout tableLayout = rootView.findViewById(R.id.tableLayout);
+
+        String jwtToken = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE).getString("JWT_TOKEN", null);
+        JWT decodedJWT = new JWT(jwtToken);
+        String userId = decodedJWT.getClaim("id").asString();
+        Call<Collection<DisplayEventType>> call = ClientUtils.eventService.getEventTypesForSpp(Integer.parseInt(userId));
+        call.enqueue(new Callback<Collection<DisplayEventType>>() {
             @Override
-            public void onResponse(Call<List<DisplayEventType>> call, Response<List<DisplayEventType>> response) {
+            public void onResponse(Call<Collection<DisplayEventType>> call, Response<Collection<DisplayEventType>> response) {
                 if(response.code()==201 || response.code()==200){
-                    List<DisplayEventType> eventTypes = response.body();
-
-                    for (DisplayEventType et : eventTypes) {
-                        TableRow row = new TableRow(requireContext());
-
-                        // Kreiraj ćelije reda
-                        TextView name = new TextView(requireContext());
-                        name.setText(et.getName());
-
-                        TextView description = new TextView(requireContext());
-                        description.setText(et.getDescription());
-
-                        TextView status = new TextView(requireContext());
-                        status.setText(et.getEventTypeStatus());
-
-                        TextView categories= new TextView(requireContext());
-                        categories.setText(et.getRecommendedServiceAndProductCategories());
-                        // Dodaj ćelije u red
-                        row.addView(name);
-                        row.addView(description);
-                        row.addView(status);
-                        row.addView(categories);
-                        // Dodaj red u tabelu
-                        TableLayout tableLayout = rootView.findViewById(R.id.tableLayout);
-
-                        tableLayout.addView(row);
-                    }
+                    displayEventTypesInTable(response.body(), tableLayout);
                 }
                 else if(response.code()==404){
                     Toast.makeText(requireContext(), "User with this id does not exist", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Log.i("rez", String.valueOf(response.code()));
+                    Toast.makeText(requireContext(), "Failed to load event types", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<DisplayEventType>> call, Throwable t) {
+            public void onFailure(Call<Collection<DisplayEventType>> call, Throwable t) {
                 Log.d("REZ",t.getMessage()!=null?t.getMessage():"error");
             }
 
         });
-        Button updateButton = rootView.findViewById(R.id.updateBtn);
 
-        updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), EventTypeUpdateActivity.class);
-                startActivity(intent);
-
-            }
-        });
         return rootView;
+    }
+    private void displayEventTypesInTable(Collection<DisplayEventType> eventTypes, TableLayout tableLayout) {
+        if (eventTypes == null) return;
+
+        // Header
+        TableRow rowHeader = new TableRow(requireContext());
+
+        String[] headers = {"Name","Description", "ET Status", "RecommendedServiceAndProductCategories"};
+        for (String header : headers) {
+            TextView tv = new TextView(requireContext());
+            tv.setText(header);
+            tv.setGravity(Gravity.CENTER);
+            tv.setTextSize(15f);
+            rowHeader.addView(tv);
+        }
+
+        rowHeader.setBackgroundColor(Color.parseColor("#EC8305"));
+        tableLayout.addView(rowHeader);
+
+        for (DisplayEventType et: eventTypes) {
+            TableRow row = new TableRow(requireContext());
+
+            addCell(row, et.getName());
+            addCell(row, et.getDescription());
+            addCell(row, et.getEventTypeStatus());
+            addCell(row, et.getRecommendedServiceAndProductCategories());
+
+            Button update= new Button(requireContext());
+            update.setText("UPDATE");
+            update.setBackgroundColor(Color.parseColor("#EC8305"));
+            row.addView(update);
+
+            int eventTypeId = et.getId();
+            update.setOnClickListener(v -> {
+                Intent intent = new Intent(getActivity(), EventTypeUpdateActivity.class);
+                intent.putExtra("id", eventTypeId);
+                startActivity(intent);
+            });
+
+            tableLayout.addView(row);
+        }
+    }
+
+    private void addCell(TableRow row, String text) {
+        TextView tv = new TextView(requireContext());
+        tv.setText(text);
+        tv.setGravity(Gravity.CENTER);
+        tv.setTextSize(15f);
+        row.addView(tv);
     }
 }

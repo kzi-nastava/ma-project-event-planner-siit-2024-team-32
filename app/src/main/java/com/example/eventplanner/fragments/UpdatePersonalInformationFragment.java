@@ -1,5 +1,6 @@
 package com.example.eventplanner.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.auth0.android.jwt.JWT;
 import com.example.eventplanner.R;
 import com.example.eventplanner.activities.HomeActivity;
 import com.example.eventplanner.clients.ClientUtils;
@@ -115,13 +117,15 @@ public class UpdatePersonalInformationFragment extends Fragment {
                (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1) && !phone1.isEmpty() && isValidPhoneNumber(phone1) && isEmpty(curPassword1,newPassword1,newPasswordConf1))||
                (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1) && phone1.isEmpty() && isNotEmpty(curPassword1,newPassword1,newPasswordConf1) && newPassword1.equals(newPasswordConf1))||
                (isNotEmpty(curPassword1,newPassword1,newPasswordConf1,name1,surname1,country1,city1,address1,phone1) && !phone1.isEmpty() && isValidPhoneNumber(phone1) && isNotEmpty(curPassword1,newPassword1,newPasswordConf1) && newPassword1.equals(newPasswordConf1))){
-                Toast.makeText(requireContext(), "Valid input", Toast.LENGTH_SHORT).show();
-                Call<UpdateEventOrganizer> call = ClientUtils.registeredUserService.updateEo(5,new UpdateEventOrganizer(1,newPassword1,name1,surname1,phone1,city1,address1,country1));
+                String jwtToken = requireContext().getSharedPreferences("Preferences", Context.MODE_PRIVATE).getString("JWT_TOKEN", null);
+                JWT decodedJWT = new JWT(jwtToken);
+                String userId = decodedJWT.getClaim("id").asString();
+                Call<UpdateEventOrganizer> call = ClientUtils.registeredUserService.updateEo(Integer.parseInt(userId),new UpdateEventOrganizer(1,newPassword1,name1,surname1,phone1,city1,address1,country1));
                 call.enqueue(new Callback<UpdateEventOrganizer>() {
                     @Override
                     public void onResponse(Call<UpdateEventOrganizer> call, Response<UpdateEventOrganizer> response) {
                         if(response.code()==201 || response.code()==200){
-                            Toast.makeText(requireContext(), "Valid input!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireContext(), "Successfully updated event organizer!", Toast.LENGTH_SHORT).show();
                             Log.i("rez", String.valueOf(response.body()));
                             Intent intent = new Intent(getActivity(), HomeActivity.class);
                             startActivity(intent);
@@ -131,6 +135,7 @@ public class UpdatePersonalInformationFragment extends Fragment {
                         }
                         else{
                             Log.i("rez", String.valueOf(response.code()));
+                            Toast.makeText(requireContext(), "Error!", Toast.LENGTH_SHORT).show();
                         }
                     }
 
