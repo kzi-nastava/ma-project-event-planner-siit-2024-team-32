@@ -18,9 +18,8 @@ import com.auth0.android.jwt.JWT;
 import com.example.eventplanner.R;
 import com.example.eventplanner.activities.HomeActivity;
 import com.example.eventplanner.clients.ClientUtils;
-import com.example.eventplanner.model.EventOrganizer;
 import com.example.eventplanner.model.EventType;
-import com.example.eventplanner.model.EventTypeStatus;
+import com.example.eventplanner.model.enums.EventTypeStatus;
 
 import retrofit2.Call;
 import retrofit2.Callback;
