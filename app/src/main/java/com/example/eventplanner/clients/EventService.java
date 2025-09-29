@@ -77,4 +77,7 @@ public interface EventService {
     Call<ArrayList<CreatedEvent>> getFavEvents(@Path("id") Integer id);
 
 
+    @GET("/api/events/top5Events")
+    Call<ArrayList<Event>> getTop5Events();
+
 }
