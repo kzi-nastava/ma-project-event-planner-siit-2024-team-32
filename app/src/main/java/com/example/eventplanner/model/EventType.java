@@ -1,5 +1,6 @@
 package com.example.eventplanner.model;
 
+import com.example.eventplanner.model.enums.EventTypeStatus;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
