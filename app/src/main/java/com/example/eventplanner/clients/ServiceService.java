@@ -3,14 +3,17 @@ package com.example.eventplanner.clients;
 import com.example.eventplanner.dto.CreateServiceAndProductCategoryDTO;
 import com.example.eventplanner.dto.CreateServiceDTO;
 import com.example.eventplanner.dto.CreateServiceReviewDTO;
+import com.example.eventplanner.dto.Page;
 import com.example.eventplanner.dto.UpdateServiceDTO;
 import com.example.eventplanner.model.EventOrganizer;
 import com.example.eventplanner.model.GetService;
 import com.example.eventplanner.model.Service;
 import com.example.eventplanner.model.ServiceAndProductCategory;
 import com.example.eventplanner.model.ServiceReview;
+import com.example.eventplanner.model.enums.AppointmentType;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -20,6 +23,8 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 public interface ServiceService {
     @Headers({
@@ -46,7 +51,7 @@ public interface ServiceService {
     Call<ArrayList<Service>> findByProviderId(@Path("id") Integer id);
 
     @GET("/api/services/search")
-    Call<ArrayList<Service>> search(@Path("id") Integer id);//////////////////////////////
+    Call<Page> search(@QueryMap Map<String, String> filters);
 
     @GET("/api/services/favService/{id}")
     Call<ArrayList<GetService>> getFavServices(@Path("id") Integer id);
@@ -76,10 +81,13 @@ public interface ServiceService {
     Call<?> deleteFavoriteService(@Path("userId") Integer userId, @Path("serviceId") Integer serviceId);
 
     @GET("/api/services/category")
-    Call<ArrayList<ServiceAndProductCategory>> findAllCategories();
+    Call<Page> findAllCategories();
 
     @GET("/api/services/category/{id}")
     Call<ServiceAndProductCategory> findOneCategory(@Path("id") Integer id);
+
+    @GET("/api/services/category/name/{name}")
+    Call<ServiceAndProductCategory> findCategoryByName(@Path("name") String name);
 
     @POST("/api/services/category")
     Call<ServiceAndProductCategory> createCategory(@Body CreateServiceAndProductCategoryDTO category);

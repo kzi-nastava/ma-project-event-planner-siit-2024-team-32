@@ -63,379 +63,106 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingLeft="5dp">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/servicesSearchNameLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:layout_gravity="center_vertical" />
 
                 <EditText
-                    android:id="@+id/searchEntry"
-                    android:background="@drawable/textview_border"
-                    android:layout_marginTop="13dp"
+                    android:id="@+id/servicesSearchName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="text" />
-
-                <ImageButton
-                    android:id="@+id/searchButton"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:background="#00FFFFFF"
-                    android:src="@drawable/baseline_search_24" />
-
+                    android:background="@drawable/textview_border"
+                    android:inputType="text"
+                    android:layout_gravity="center_vertical"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="13dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:layout_marginTop="10dp">
 
                 <TextView
-                    android:id="@+id/lengthFromText"
+                    android:id="@+id/servicesSearchCategoryLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Min. length:" />
+                    android:text="Category" />
 
-                <EditText
-                    android:id="@+id/lengthFromEntry"
+                <Spinner
+                    android:id="@+id/servicesSearchCategory"
                     android:background="@drawable/textview_border"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:inputType="number" />
-
-                <FrameLayout
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"></FrameLayout>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
 
                 <TextView
-                    android:id="@+id/lengthToText"
+                    android:id="@+id/servicesSearchStatusLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Max. length:" />
+                    android:text="Status" />
 
-                <EditText
-                    android:id="@+id/lengthToEntry"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                <Spinner
+                    android:id="@+id/servicesSearchStatus"
                     android:background="@drawable/textview_border"
-
-                    android:inputType="number" />
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="13dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:layout_marginTop="10dp">
 
                 <TextView
-                    android:id="@+id/priceFromText"
+                    android:id="@+id/servicesSearchPriceLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Min. price:  " />
+                    android:text="Price" />
 
                 <EditText
-                    android:id="@+id/priceFromEntry"
+                    android:id="@+id/servicesSearchPriceMin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/textview_border"
-
-                    android:inputType="numberDecimal" />
-
-                <FrameLayout
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"></FrameLayout>
+                    android:inputType="number" />
 
                 <TextView
                     android:id="@+id/priceToText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Max. price:  " />
+                    android:text=" : " />
 
                 <EditText
-                    android:id="@+id/priceToEntry"
+                    android:id="@+id/servicesSearchPriceMax"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/textview_border"
-
-                    android:inputType="numberDecimal" />
+                    android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/discountText"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:text="Min. discount:"
-                    android:textAlignment="center" />
-
-                <EditText
-                    android:id="@+id/editTextNumberDecimal3"
+                android:layout_marginTop="10dp">
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:background="@drawable/textview_border"
-
-
-
-                    android:inputType="numberDecimal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/cityText"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:text="City:"
-                    android:textAlignment="center" />
-
-                <EditText
-                    android:id="@+id/cityInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:background="@drawable/textview_border"
-
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="13dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/countryText"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:text="Country:"
-                    android:textAlignment="center" />
-
-                <EditText
-                    android:id="@+id/countryInput"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:background="@drawable/textview_border"
-
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/serviceStatusText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Include:"
-                    android:textSize="24sp" />
-
-                <CheckBox
-                    android:id="@+id/availableServiceStatusCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Available" />
-
-                <CheckBox
-                    android:id="@+id/unavailableServiceStatusCheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Unavailable" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingRight="12dp">
-
-                <TextView
-                    android:id="@+id/appointmentTypeText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Appointment type:"
-                    android:textSize="20sp" />
-
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/appointmentType1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Set" />
-
-                    <RadioButton
-                        android:id="@+id/appointmentType2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Custom" />
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="12dp"
-                android:paddingBottom="24dp">
-
-                <TextView
-                    android:id="@+id/serviceCategoryText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:text="Service categories:"
-                    android:textSize="24sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/serviceCategoryCheckBox1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Music band" />
-
-                    <CheckBox
-                        android:id="@+id/serviceCategoryCheckBox2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Cake baking" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/serviceCategoryCheckBox3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Photographing" />
-
-                    <CheckBox
-                        android:id="@+id/serviceCategoryCheckBox4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Audio equipment" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingTop="12dp"
-                android:paddingBottom="24dp">
-
-                <TextView
-                    android:id="@+id/eventTypeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:text="Applicable event types:"
-                    android:textSize="24sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/eventTypeCheckBox1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Wedding" />
-
-                    <CheckBox
-                        android:id="@+id/eventTypeCheckBox2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Birthday" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <CheckBox
-                        android:id="@+id/eventTypeCheckBox3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Puppet show" />
-
-                    <CheckBox
-                        android:id="@+id/eventTypeCheckBox4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="Concert" />
-                </LinearLayout>
-
+                    android:backgroundTint="@color/orange"
+                    android:id="@+id/servicesSearchButton"
+                    android:gravity="center|center_vertical"
+                    android:onClick="goToLoginActivity"
+                    android:text="Search" />
             </LinearLayout>
 
             <LinearLayout
@@ -443,25 +170,25 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <include layout="@layout/service_card"/>
+                <include layout="@layout/service_card" />
 
-                <include layout="@layout/service_card"/>
+                <include layout="@layout/service_card" />
 
-                <include layout="@layout/service_card"/>
+                <include layout="@layout/service_card" />
 
-                <include layout="@layout/service_card"/>
+                <include layout="@layout/service_card" />
 
-                <include layout="@layout/service_card"/>
+                <include layout="@layout/service_card" />
 
-                <include layout="@layout/service_card"/>
+                <include layout="@layout/service_card" />
 
-                <include layout="@layout/service_card"/>
+                <include layout="@layout/service_card" />
 
-                <include layout="@layout/service_card"/>
+                <include layout="@layout/service_card" />
 
-                <include layout="@layout/service_card"/>
+                <include layout="@layout/service_card" />
 
-                <include layout="@layout/service_card"/>
+                <include layout="@layout/service_card" />
             </LinearLayout>
 
         </LinearLayout>

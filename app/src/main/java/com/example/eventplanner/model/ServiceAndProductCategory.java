@@ -1,7 +1,11 @@
 package com.example.eventplanner.model;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import retrofit2.Response;
 
 public class ServiceAndProductCategory {
     @SerializedName("id")
@@ -20,8 +24,11 @@ public class ServiceAndProductCategory {
     @Expose
     private String serviceAndProductCategoryStatus;
 
+    public ServiceAndProductCategory() {
+    }
+
     public ServiceAndProductCategory(Integer id, String name, String description,
-                                        String serviceAndProductCategoryStatus) {
+                                     String serviceAndProductCategoryStatus) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -51,5 +58,16 @@ public class ServiceAndProductCategory {
     }
     public void setServiceAndProductCategoryStatus(String serviceAndProductCategoryStatus) {
         this.serviceAndProductCategoryStatus = serviceAndProductCategoryStatus;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "ServiceAndProductCategory{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", serviceAndProductCategoryStatus='" + serviceAndProductCategoryStatus + '\'' +
+                '}';
     }
 }

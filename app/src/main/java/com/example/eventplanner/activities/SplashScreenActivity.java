@@ -24,7 +24,7 @@ import java.util.TimerTask;
 
 @SuppressLint("CustomSplashScreen")
 public class SplashScreenActivity extends AppCompatActivity {
-    int SPLASH_TIME_OUT = 5000;
+    int SPLASH_TIME_OUT = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
