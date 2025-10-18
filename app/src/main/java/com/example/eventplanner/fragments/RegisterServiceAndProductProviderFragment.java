@@ -16,7 +16,13 @@ import android.widget.Toast;
 import com.example.eventplanner.R;
 import com.example.eventplanner.activities.HomeActivity;
 import com.example.eventplanner.clients.ClientUtils;
+import com.example.eventplanner.model.Location;
 import com.example.eventplanner.model.ServiceAndProductProvider;
+import com.example.eventplanner.model.enums.UserStatus;
+
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDateTime;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -142,7 +148,7 @@ public class RegisterServiceAndProductProviderFragment extends Fragment {
                 name.setError("This field is required");
             }
             if(isValidInput(email1,password1,passwordRewrite1,name1,surname1,town1,country1,address1,phone1,companyName1) && isValidEmail(email1) && isValidPhoneNumber(phone1) && password1.equals(passwordRewrite1)){
-                Call<ServiceAndProductProvider> call = ClientUtils.registeredUserService.addSpp(new ServiceAndProductProvider(1,email1,password1,name1,surname1,phone1,town1,address1,country1,companyName1,description1));
+                Call<ServiceAndProductProvider> call = ClientUtils.registeredUserService.addSpp(new ServiceAndProductProvider(1,email1,password1,name1,surname1,phone1,false, Timestamp.valueOf(String.valueOf(LocalDateTime.now())),null,null,UserStatus.active,new Location(1,country1,town1,1,address1,1),null,null,null,"",null,"SERVICE_AND_PRODUCT_PROVIDER",companyName1,description1,null,null));
                 call.enqueue(new Callback<ServiceAndProductProvider>() {
                     @Override
                     public void onResponse(Call<ServiceAndProductProvider> call, Response<ServiceAndProductProvider> response) {

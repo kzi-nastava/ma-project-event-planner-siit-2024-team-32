@@ -128,11 +128,11 @@ public class DisplayCompanyInfoFragment extends Fragment {
                     EditText surname=rootView.findViewById(R.id.last_name_input);
                     surname.setText(response.body().getLastName());
                     EditText country=rootView.findViewById(R.id.country_input);
-                    country.setText(response.body().getCountry());
+                    country.setText(response.body().getLocation().getCountry());
                     EditText city=rootView.findViewById(R.id.city_input);
-                    city.setText(response.body().getCity());
+                    city.setText(response.body().getLocation().getCity());
                     EditText address=rootView.findViewById(R.id.address_input);
-                    address.setText(response.body().getAddress());
+                    address.setText(response.body().getLocation().getStreetName());
                     EditText phone=rootView.findViewById(R.id.phone_input);
                     phone.setText(response.body().getPhoneNumber());
                     EditText description=rootView.findViewById(R.id.description_input);
